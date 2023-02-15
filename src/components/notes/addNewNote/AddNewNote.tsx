@@ -1,6 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { useAppDispatch } from '../../../hooks/redux';
+import { setNotes } from '../../../redux/slices/notes';
+import styles from './addNewNote.module.css'
+import { ViewAddNewNoteContext } from '../../../pages/Dashboard';
 
 const AddNewNote = () => {
+  const dispatch = useAppDispatch();
+
+  const { viewAddNewNote, setViewAddNewNote } = useContext(ViewAddNewNoteContext);
 
   const [singledata, setSingledata] = useState({
       title: '',
@@ -16,7 +23,9 @@ const AddNewNote = () => {
   
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    createNote();
+    if (singledata.title != '' && singledata.content != ''){
+      createNote();
+    }
   };
   
   const createNote = () => {
@@ -33,15 +42,29 @@ const AddNewNote = () => {
         title: "",
         content: ""
       });
+      updateNotes();
     })
     .catch(error => {
       console.error('Ha ocurrido un error:', error);
     });
   };
 
+  const updateNotes = () => {
+    fetch("http://localhost:3001/posts")
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch(setNotes(res));
+      })
+      .catch((error) => console.error(error));
+  }
+
+  const hideView = () => {
+    setViewAddNewNote(!viewAddNewNote);
+  }
+
   return (
       <>
-          <form onSubmit={handleSubmit}>
+          <form className={styles.formContainer}>
               <input 
               type="text" 
               name="title" 
@@ -49,14 +72,16 @@ const AddNewNote = () => {
               onChange={handleChange} 
               value={singledata.title}
               />
-              <input 
-              type="text" 
-              name="content" 
-              placeholder="Content"
-              onChange={handleChange} 
-              value={singledata.content}
+              <textarea 
+                name="content" 
+                placeholder="Content"
+                onChange={handleChange} 
+                value={singledata.content}
               />
-              <button type="submit">Guardar</button>
+              <div className={styles.btnsContainer}>
+                <p className={styles.btn} onClick={hideView}>Cancelar</p>
+                <p className={styles.btn} onClick={handleSubmit}>Guardar</p>
+              </div>
           </form>
       </>
   )

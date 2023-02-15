@@ -1,0 +1,25 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+.formContainer input, .formContainer textarea {
+    margin-bottom: 20px;
+    padding: 5px;
+}
+.formContainer textarea {
+    min-height: 100px;
+}
+.btnsContainer {
+    display: flex;
+    justify-content: center;
+} 
+.btnsContainer .btn {
+    width: 250px;
+    background-color: red;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 5px;
+}
