@@ -13,7 +13,7 @@ const Note = () => {
                     note ?
                         note.map((note, index) => {
                             return (
-                                <div className={styles.containerNote} key={index}>
+                                <div id={note.id} className={styles.containerNote} key={index}>
                                     <p className={styles.title}>{note.title}</p>
                                     <p className={styles.content}>{note.content}</p>
                                 </div>

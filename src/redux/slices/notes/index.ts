@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface INote {
     title: string;
     content: string;
+    id: string;
 }
 
 const initialState: INote[] = [];

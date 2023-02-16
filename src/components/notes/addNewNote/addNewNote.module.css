@@ -1,3 +1,7 @@
+.mainContainer {
+    background: #f1f1f1;
+    padding-bottom: 20px;
+}
 .formContainer {
     display: flex;
     flex-direction: column;
@@ -11,15 +15,17 @@
 }
 .formContainer textarea {
     min-height: 100px;
+    font-family: inherit;
 }
 .btnsContainer {
     display: flex;
     justify-content: center;
 } 
 .btnsContainer .btn {
-    width: 250px;
-    background-color: red;
+    width: 150px;
+    background-color: #01a2a6;
     cursor: pointer;
     padding: 5px;
     margin: 0 5px;
+    border-radius: 3px;
 }

@@ -13,19 +13,15 @@ export const ViewAddNewNoteContext = createContext({
 const Dashboard = () => {
 
   const [viewAddNewNote, setViewAddNewNote] = useState(false);
+  const [show, setShow] = useState(false);
 
   return (
     <>
       <ViewAddNewNoteContext.Provider value={{ viewAddNewNote, setViewAddNewNote }}>
         <SubNavBar />
-        {
-          viewAddNewNote ? 
-            <CSSTransition in={viewAddNewNote} timeout={300} classNames="fade" unmountOnExit>
-              <AddNewNote />
-            </CSSTransition>
-          :
-            null
-        }
+        <CSSTransition in={viewAddNewNote} timeout={200} classNames="fade" unmountOnExit>
+          <AddNewNote />
+        </CSSTransition>
         <Note />
       </ViewAddNewNoteContext.Provider>
     </>  

@@ -64,25 +64,27 @@ const AddNewNote = () => {
 
   return (
       <>
+        <div className={styles.mainContainer}>
           <form className={styles.formContainer}>
-              <input 
-              type="text" 
-              name="title" 
-              placeholder="Título" 
-              onChange={handleChange} 
-              value={singledata.title}
-              />
-              <textarea 
-                name="content" 
-                placeholder="Content"
+                <input 
+                type="text" 
+                name="title" 
+                placeholder="Title" 
                 onChange={handleChange} 
-                value={singledata.content}
-              />
-              <div className={styles.btnsContainer}>
-                <p className={styles.btn} onClick={hideView}>Cancelar</p>
-                <p className={styles.btn} onClick={handleSubmit}>Guardar</p>
-              </div>
-          </form>
+                value={singledata.title}
+                />
+                <textarea 
+                  name="content" 
+                  placeholder="Content"
+                  onChange={handleChange} 
+                  value={singledata.content}
+                />
+                <div className={styles.btnsContainer}>
+                  <p className={styles.btn} onClick={hideView}>Cancelar</p>
+                  <p className={styles.btn} onClick={handleSubmit}>Guardar</p>
+                </div>
+            </form>
+        </div>
       </>
   )
 }
