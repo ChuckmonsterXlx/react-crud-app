@@ -10,10 +10,20 @@
 .containerNote {
     background: #66ccdd;
     margin-bottom: 30px;
-    padding: 0 20px;
     border-radius: 2px;
+}
+.divOptions {
+    cursor: pointer;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 7px;
+    margin-top: 7px;
+    padding: 0px 4px;
 }
 .containerNote .title {
     font-weight: 500;
     font-size: 17px;
+}
+.containerNote p {
+    padding: 0 20px;
 }

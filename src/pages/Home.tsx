@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAppSelector, useAppDispatch } from '../hooks/redux/index.ts'
+import { useAppSelector, useAppDispatch } from '../hooks/redux/index'
 
 const Home = () => {
   const { note } = useAppSelector((state) => state);

@@ -13,7 +13,8 @@ const Note = () => {
                     note ?
                         note.map((note, index) => {
                             return (
-                                <div id={note.id} className={styles.containerNote} key={index}>
+                                <div className={styles.containerNote} key={index}>
+                                    <div className={ styles.divOptions } onClick={() => console.log("has dado click a la notaID: ", note.id)}>X</div>
                                     <p className={styles.title}>{note.title}</p>
                                     <p className={styles.content}>{note.content}</p>
                                 </div>
