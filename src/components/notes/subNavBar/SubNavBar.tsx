@@ -15,9 +15,9 @@ const SubNavBar = () => {
     return (
         <>
             <div className={styles.subNavBar}>
-                <div className={styles.container} onClick={() => showHide()}>
+                <div className={styles.container}>
                     <h1>Notes</h1>
-                    <p><FontAwesomeIcon icon={faPlus} /> Add note</p>
+                    <div onClick={() => showHide()} ><FontAwesomeIcon icon={faPlus}/> Add note</div>
                 </div>
             </div>
         </>

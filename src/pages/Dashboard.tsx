@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group';
 import SubNavBar from '../components/notes/subNavBar/SubNavBar'
 import AddNewNote from '../components/notes/addNewNote/AddNewNote'
@@ -11,16 +11,18 @@ export const ViewAddNewNoteContext = createContext({
 });
 
 const Dashboard = () => {
+  const addNewNoteRef = useRef(null);
 
   const [viewAddNewNote, setViewAddNewNote] = useState(false);
-  const [show, setShow] = useState(false);
 
   return (
     <>
       <ViewAddNewNoteContext.Provider value={{ viewAddNewNote, setViewAddNewNote }}>
         <SubNavBar />
-        <CSSTransition in={viewAddNewNote} timeout={200} classNames="fade" unmountOnExit>
-          <AddNewNote />
+        <CSSTransition in={viewAddNewNote} timeout={200} classNames="fade" unmountOnExit nodeRef={addNewNoteRef}>
+          <div ref={addNewNoteRef}>
+            <AddNewNote />
+          </div>
         </CSSTransition>
         <Note />
       </ViewAddNewNoteContext.Provider>

@@ -8,14 +8,19 @@
 }
 
 .containerNote {
+    display: flex;
+    flex-direction: column;
     background: #66ccdd;
     margin-bottom: 30px;
     border-radius: 2px;
 }
 .divOptions {
+    display: flex;
+    justify-content: right;
+}
+.iconOption {
     cursor: pointer;
     width: fit-content;
-    margin-left: auto;
     margin-right: 7px;
     margin-top: 7px;
     padding: 0px 4px;
@@ -26,4 +31,9 @@
 }
 .containerNote p {
     padding: 0 20px;
+}
+
+.titleEdit {
+    font-weight: 500;
+    font-size: 17px;
 }
