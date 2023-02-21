@@ -52,9 +52,8 @@ const Note = () => {
 
             setEditMode(true);
 
-            btnOption.style.opacity = '0';
-
-            // Crear un nuevo elemento input
+            btnOption.style.display = 'none';
+            
             const newNoteTitle = document.createElement('input');
             newNoteTitle.type = 'text';
             newNoteTitle.value = noteTitle.innerText;
@@ -62,34 +61,38 @@ const Note = () => {
 
             const newNoteContent = document.createElement('textarea');
             newNoteContent.value = noteContent.innerText;
+            newNoteContent.className = styles.contentEdit;
+
+            const btnContainer = document.createElement('div');
+            btnContainer.className = styles.btnContainer;
 
             const cancelButton = document.createElement('button');
             cancelButton.innerText = 'Cancel';
             cancelButton.addEventListener('click', () => {
                 noteRef.current.replaceChild(noteTitle, newNoteTitle);
                 noteRef.current.replaceChild(noteContent, newNoteContent);
-                noteRef.current.removeChild(cancelButton);
-                noteRef.current.removeChild(acceptButton);
+                noteRef.current.removeChild(btnContainer);
                 setEditMode(false);
-                btnOption.style.opacity = '1';
+                btnOption.style.display = 'block';
             });
             const acceptButton = document.createElement('button');
             acceptButton.innerText = 'Ok';
             acceptButton.addEventListener('click', async () => {
                 await updateNote(noteID, newNoteTitle.value, newNoteContent.value );
+                noteTitle.innerText = newNoteTitle.value;
+                noteContent.innerText = newNoteContent.value;
                 noteRef.current.replaceChild(noteTitle, newNoteTitle);
                 noteRef.current.replaceChild(noteContent, newNoteContent);
-                noteRef.current.removeChild(cancelButton);
-                noteRef.current.removeChild(acceptButton);
+                noteRef.current.removeChild(btnContainer);
                 setEditMode(false);
-                btnOption.style.opacity = '1';
+                btnOption.style.display = 'block';
             })
             
-            // Reemplazar el elemento div con el nuevo elemento input
             noteRef.current.replaceChild(newNoteTitle, noteTitle);
             noteRef.current.replaceChild(newNoteContent, noteContent);
-            noteRef.current.appendChild(cancelButton);
-            noteRef.current.appendChild(acceptButton);
+            noteRef.current.appendChild(btnContainer);
+            btnContainer.appendChild(cancelButton);
+            btnContainer.appendChild(acceptButton);
         } else {
             console.log('no puedes editar la nota');
         }

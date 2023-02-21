@@ -13,6 +13,7 @@
     background: #66ccdd;
     margin-bottom: 30px;
     border-radius: 2px;
+    height: min-content;
 }
 .divOptions {
     display: flex;
@@ -36,4 +37,31 @@
 .titleEdit {
     font-weight: 500;
     font-size: 17px;
+    margin: 0 20px;
+    background: none;
+    border: 0;
+}
+.contentEdit {
+    font-family: inherit;
+    font-size: 15px;
+    resize: vertical;
+}
+.titleEdit, .contentEdit {
+    margin: 10px 20px;
+    background: none;
+    border: 0;
+}
+.titleEdit:focus, .contentEdit:focus {
+    outline: none;
+}
+.btnContainer {
+    display: flex;
+    justify-content: center;
+
+}
+.btnContainer button {
+    padding: 3px 20px;
+    min-width: 90px;
+    margin: 10px 5px;
+    cursor: pointer;
 }

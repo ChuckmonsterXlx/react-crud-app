@@ -1,9 +1,9 @@
 {
   "posts": [
     {
-      "title": "Este es un cambio 'b'",
-      "content": "Se me olvido agregar 'x' cosa.",
-      "id": 5
+      "title": "Esta es una nueva nota del 21/02/2023",
+      "content": "Contenido nuevo para esta nota //Random",
+      "id": 6
     }
   ]
 }
