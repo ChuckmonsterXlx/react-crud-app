@@ -1,9 +1,34 @@
 {
   "posts": [
     {
-      "title": "Esta es una nueva nota del 21/02/2023",
-      "content": "Contenido nuevo para esta nota //Random",
-      "id": 6
+      "title": "Esta es una de Isma",
+      "content": "Estamos trabajando con React y json server como mock serverEstamos trabajando con React y json server como mock serverEstamos trabajando con React y json server como mock serverEstamos trabajando con React y json server como mock server",
+      "id": 7
+    },
+    {
+      "title": "asd",
+      "content": "asd",
+      "id": 9
+    },
+    {
+      "title": "Nota 3",
+      "content": "Contenido de la nota 3",
+      "id": 10
+    },
+    {
+      "title": "asldkja",
+      "content": "kldsjgsa",
+      "id": 11
+    },
+    {
+      "title": "dljghalkdas",
+      "content": "sdkljadl",
+      "id": 12
+    },
+    {
+      "title": "asdkljfaskljdas",
+      "content": "afklasjdklasafklasjdklasafklasjdklasaf klasjdklasafklasjdklasafklasjdklasafklasjdklasafklasjd klasafklasjdklasafklasjdklasafklasjdklasafklasjdklasaf klasjdklasafklasjdklasafklasjdklas",
+      "id": 13
     }
   ]
 }

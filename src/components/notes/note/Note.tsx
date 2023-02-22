@@ -143,27 +143,85 @@ const Note = () => {
     return (
         <>
             <div className={styles.mainContainerNotes}>
-                {
-                    note ?
-                        note.map((note, index) => {
-                            return (
-                                <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
-                                    <div className={ styles.divOptions }>
-                                        <div className={`btnOption `+styles.iconOption } onClick={() => editNote(note.id, index)}>
-                                            <FontAwesomeIcon icon={ faEdit } />
+                <div className='columnA'>
+                    {
+                        note ?
+                            note.map((note, index) => {
+                                if (index % 3 === 0) {
+                                    return (
+                                        <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
+                                            <div className={ styles.divOptions }>
+                                                <div className={`btnOption `+styles.iconOption } onClick={() => editNote(note.id, index)}>
+                                                    <FontAwesomeIcon icon={ faEdit } />
+                                                </div>
+                                                <div className={ styles.iconOption } onClick={() => deleteNote(note.id)}>
+                                                    <FontAwesomeIcon icon={ faTimes } />
+                                                </div>
+                                            </div>
+                                            <p className={`noteTitle `+styles.title}>{note.title}</p>
+                                            <p className={`noteContent `+ styles.content}>{note.content}</p>
                                         </div>
-                                        <div className={ styles.iconOption } onClick={() => deleteNote(note.id)}>
-                                            <FontAwesomeIcon icon={ faTimes } />
+                                    );
+                                }
+                                
+                            })
+                        :
+                            null
+                    }
+                </div>
+                <div className='columnB'>
+                    {
+                        note ?
+                            note.map((note, index) => {
+                                if (index % 3 === 1) {
+                                    return (
+                                        <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
+                                            <div className={ styles.divOptions }>
+                                                <div className={`btnOption `+styles.iconOption } onClick={() => editNote(note.id, index)}>
+                                                    <FontAwesomeIcon icon={ faEdit } />
+                                                </div>
+                                                <div className={ styles.iconOption } onClick={() => deleteNote(note.id)}>
+                                                    <FontAwesomeIcon icon={ faTimes } />
+                                                </div>
+                                            </div>
+                                            <p className={`noteTitle `+styles.title}>{note.title}</p>
+                                            <p className={`noteContent `+ styles.content}>{note.content}</p>
                                         </div>
-                                    </div>
-                                    <p className={`noteTitle `+styles.title}>{note.title}</p>
-                                    <p className={`noteContent `+ styles.content}>{note.content}</p>
-                                </div>
-                            );
-                        })
-                    :
-                        null
-                }
+                                    );
+                                }
+                                
+                            })
+                        :
+                            null
+                    }
+                </div>
+                <div className='columnC'>
+                    {
+                        note ?
+                            note.map((note, index) => {
+                                if (index % 3 === 2) {
+                                    return (
+                                        <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
+                                            <div className={ styles.divOptions }>
+                                                <div className={`btnOption `+styles.iconOption } onClick={() => editNote(note.id, index)}>
+                                                    <FontAwesomeIcon icon={ faEdit } />
+                                                </div>
+                                                <div className={ styles.iconOption } onClick={() => deleteNote(note.id)}>
+                                                    <FontAwesomeIcon icon={ faTimes } />
+                                                </div>
+                                            </div>
+                                            <p className={`noteTitle `+styles.title}>{note.title}</p>
+                                            <p className={`noteContent `+ styles.content}>{note.content}</p>
+                                        </div>
+                                    );
+                                }
+                                
+                            })
+                        :
+                            null
+                    }
+                </div>
+                
             </div>
         </>
     )
