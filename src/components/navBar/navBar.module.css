@@ -1,9 +1,7 @@
 .navContainer {
     padding-right: 25px;
     display: flex;
-    align-items: center;
     min-height: 300px;
-    min-width: 150px;
 }
 
 .navContainer ul {
