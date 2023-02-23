@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard.tsx";
 import { useAppSelector, useAppDispatch } from "./hooks/redux/index.ts";
 import { setNotes } from "./redux/slices/notes/index.ts";
 import NavBar from "./components/navBar/NavBar";
+import Login from "./pages/Login.tsx";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </div>

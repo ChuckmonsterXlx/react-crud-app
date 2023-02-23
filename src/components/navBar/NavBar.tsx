@@ -5,7 +5,7 @@ import styles from "./navBar.module.css";
 
 //font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faHome, faBorderAll } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faHome, faBorderAll, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
 
@@ -16,40 +16,22 @@ const NavBar = () => {
     }
 
     return (
-        <>
-            {
-                hideShowNav ?
-                    <nav className={styles.navContainer}>
-                        <ul>
-                            <li onClick={onHideShowNav}>
-                                <div className={styles.iconContainer}><FontAwesomeIcon icon={faBars} /></div>
-                            </li>
-                        <li>
-                            <Link to="/"><div className={styles.iconContainer}><FontAwesomeIcon icon={faHome}/></div> Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard"><div className={styles.iconContainer}><FontAwesomeIcon icon={faBorderAll}/></div> Dashboard</Link>
-                            
-                        </li>
-                        </ul>
-                    </nav>
-                :
-                    <nav className={styles.navContainer}>
-                        <ul>
-                            <li onClick={onHideShowNav}>
-                                <div className={styles.iconContainer}><FontAwesomeIcon icon={faBars} /></div>
-                            </li>
-                            <li>
-                                <Link to="/"><div className={styles.iconContainer}><FontAwesomeIcon icon={faHome}/></div></Link>
-                            </li>
-                            <li>
-                                <Link to="/dashboard"><div className={styles.iconContainer}><FontAwesomeIcon icon={faBorderAll}/></div></Link>
-                                
-                            </li>
-                        </ul>
-                    </nav>
-            }
-        </>
+        <nav className={styles.navContainer}>
+            <ul>
+                <li onClick={onHideShowNav}>
+                    <div className={styles.iconContainer}><FontAwesomeIcon icon={faBars} /></div>
+                </li>
+                <li>
+                    <Link to="/"><div className={styles.iconContainer}><FontAwesomeIcon icon={faHome}/></div>{ hideShowNav && 'Home'}</Link>
+                </li>
+                <li>
+                    <Link to="/dashboard"><div className={styles.iconContainer}><FontAwesomeIcon icon={faBorderAll}/></div>{hideShowNav && 'Dashboard'}</Link>   
+                </li>
+                <li>
+                    <Link to="/login"><div className={styles.iconContainer}><FontAwesomeIcon icon={faUser}/></div>{hideShowNav && 'Login'}</Link>   
+                </li>
+            </ul>
+        </nav>
     )
 }
 
