@@ -18,13 +18,15 @@ const Dashboard = () => {
   return (
     <>
       <ViewAddNewNoteContext.Provider value={{ viewAddNewNote, setViewAddNewNote }}>
-        <SubNavBar />
-        <CSSTransition in={viewAddNewNote} timeout={200} classNames="fade" unmountOnExit nodeRef={addNewNoteRef}>
-          <div ref={addNewNoteRef}>
-            <AddNewNote />
-          </div>
-        </CSSTransition>
-        <Note />
+        <div style={{width: "100%"}}>
+          <SubNavBar />
+          <CSSTransition in={viewAddNewNote} timeout={200} classNames="fade" unmountOnExit nodeRef={addNewNoteRef}>
+            <div ref={addNewNoteRef}>
+              <AddNewNote />
+            </div>
+          </CSSTransition>
+          <Note />
+        </div>
       </ViewAddNewNoteContext.Provider>
     </>  
   )
