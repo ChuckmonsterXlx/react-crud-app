@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Home from "./pages/Home.tsx";
 import "./App.css";
 import Dashboard from "./pages/Dashboard.tsx";
-import { useAppSelector, useAppDispatch } from './hooks/redux/index.ts'
-import { setNotes } from './redux/slices/notes/index.ts'; 
+import { useAppSelector, useAppDispatch } from "./hooks/redux/index.ts";
+import { setNotes } from "./redux/slices/notes/index.ts";
+import NavBar from "./components/navBar/NavBar";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -22,17 +23,7 @@ function App() {
     <div className="App">
       <Router>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/dashboard">Dashboard</Link>
-              </li>
-            </ul>
-          </nav>
-
+          <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />

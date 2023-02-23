@@ -2,13 +2,8 @@
   "posts": [
     {
       "title": "Esta es una de Isma",
-      "content": "Estamos trabajando con React y json server como mock serverEstamos trabajando con React y json server como mock serverEstamos trabajando con React y json server como mock serverEstamos trabajando con React y json server como mock server",
+      "content": "Estamos trabajando con React y json server Estamos trabajando con React y json server como mock",
       "id": 7
-    },
-    {
-      "title": "asd",
-      "content": "asd",
-      "id": 9
     },
     {
       "title": "Nota 3",
@@ -16,19 +11,9 @@
       "id": 10
     },
     {
-      "title": "asldkja",
-      "content": "kldsjgsa",
-      "id": 11
-    },
-    {
-      "title": "dljghalkdas",
-      "content": "sdkljadl",
-      "id": 12
-    },
-    {
-      "title": "asdkljfaskljdas",
-      "content": "afklasjdklasafklasjdklasafklasjdklasaf klasjdklasafklasjdklasafklasjdklasafklasjdklasafklasjd klasafklasjdklasafklasjdklasafklasjdklasafklasjdklasaf klasjdklasafklasjdklasafklasjdklas",
-      "id": 13
+      "title": "title",
+      "content": "all content goes here\n",
+      "id": 14
     }
   ]
 }
