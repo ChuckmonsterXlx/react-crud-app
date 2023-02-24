@@ -8,6 +8,7 @@ import { setNotes } from "./redux/slices/notes/index.ts";
 import { setUsers } from "./redux/slices/users/index";
 import NavBar from "./components/navBar/NavBar";
 import Login from "./pages/Login.tsx";
+import SignUpForm from "./pages/SignUp.tsx";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUpForm />} />
         </Routes>
       </Router>
     </div>
