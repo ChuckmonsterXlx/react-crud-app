@@ -2,8 +2,8 @@ import React from 'react'
 import { useAppSelector, useAppDispatch } from '../hooks/redux/index'
 
 const Home = () => {
-  const { note } = useAppSelector((state) => state);
-  console.log(note);
+  const { notes } = useAppSelector((state) => state);
+  console.log(notes);
 
   return (
     <div>

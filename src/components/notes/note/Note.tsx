@@ -8,7 +8,7 @@ import { faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { setNotes } from '../../../redux/slices/notes';
 
 const Note = () => {
-    const { note } = useAppSelector((state) => state);
+    const { notes } = useAppSelector((state) => state);
     const noteRefs = useRef<(any | null)[]>([]);
 
     const [lastRef, setLastRef] = useState(null);
@@ -130,7 +130,7 @@ const Note = () => {
     };
 
     const updateNoteRef = () => {
-        noteRefs.current = Array.from({ length: note?.length || 0 }).map(
+        noteRefs.current = Array.from({ length: notes?.length || 0 }).map(
           (_, i) => noteRefs.current[i] || React.createRef()
         );
         setLastRef(noteRefs.current[noteRefs.current.length - 1]);
@@ -138,15 +138,15 @@ const Note = () => {
 
     useEffect(() => {
         updateNoteRef();
-    }, [note]);
+    }, [notes]);
 
     return (
         <>
             <div className={styles.mainContainerNotes}>
                 <div className='columnA'>
                     {
-                        note ?
-                            note.map((note, index) => {
+                        notes ?
+                            notes.map((note, index) => {
                                 if (index % 3 === 0) {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
@@ -171,8 +171,8 @@ const Note = () => {
                 </div>
                 <div className='columnB'>
                     {
-                        note ?
-                            note.map((note, index) => {
+                        notes ?
+                            notes.map((note, index) => {
                                 if (index % 3 === 1) {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
@@ -197,8 +197,8 @@ const Note = () => {
                 </div>
                 <div className='columnC'>
                     {
-                        note ?
-                            note.map((note, index) => {
+                        notes ?
+                            notes.map((note, index) => {
                                 if (index % 3 === 2) {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>

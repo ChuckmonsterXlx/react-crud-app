@@ -7,7 +7,7 @@
     },
     {
       "title": "Nota 3",
-      "content": "Contenido de la nota 3",
+      "content": "Contenido de la nota 2",
       "id": 10
     },
     {
@@ -16,27 +16,31 @@
       "id": 14
     },
     {
-      "title": "new title",
-      "content": "This is a new note ",
+      "title": "new titles",
+      "content": "This is a new notes",
       "id": 15
     },
     {
-      "title": "ljsalkdlalsD",
-      "content": "LAKBDNS\nKanslkdna'lkSDNLK'ansdlkansas,dn;a\na;lsdlamSD;Asda",
+      "title": "new note",
+      "content": "more notes addded\n",
       "id": 16
     }
   ],
-
   "users": [
     {
-      "email": "alfonso@gmail.com",
-      "password": "12345",
+      "name": "josue",
+      "lastName": "Aceves",
+      "email": "josue@gmail.com",
+      "password": "123456",
       "id": 1
     },
     {
-      "email": "isma@gmail.com",
-      "password": "12345",
-      "id": 1
+      "name": "josue",
+      "lastname": "",
+      "email": "josue2@gmail.com",
+      "password": "123456",
+      "lastName": "aceves",
+      "id": 2
     }
   ]
 }

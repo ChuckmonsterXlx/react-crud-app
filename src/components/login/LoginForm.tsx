@@ -4,7 +4,7 @@ import { useAppSelector } from "../../hooks/redux";
 import styles from "./loginForm.module.css";
 
 const LoginForm = () => {
-    const { user } = useAppSelector((state) => state);
+    const { users } = useAppSelector((state) => state);
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
 
@@ -23,8 +23,8 @@ const LoginForm = () => {
     const handleSubmit = (e:any) => {
         e.preventDefault();
         
-        for (let i = 0; i < user.length; i++) {
-            if (email === user[i].email && password === user[i].password)
+        for (let i = 0; i < users.length; i++) {
+            if (email === users[i].email && password === users[i].password)
             {
                 return console.log("Has iniciado sesion");
             }

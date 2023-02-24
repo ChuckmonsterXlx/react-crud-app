@@ -5,8 +5,8 @@ import userReducer from "./slices/users/index"
 
 const store = configureStore({
     reducer: {
-        note: noteReducer,
-        user: userReducer,
+        notes: noteReducer,
+        users: userReducer,
     },
 });
 
