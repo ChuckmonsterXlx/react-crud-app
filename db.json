@@ -35,12 +35,25 @@
       "id": 1
     },
     {
-      "name": "josue",
-      "lastname": "",
-      "email": "josue2@gmail.com",
+      "name": "a",
+      "lastname": "a",
+      "email": "abc@gmail.com",
       "password": "123456",
-      "lastName": "aceves",
       "id": 2
+    },
+    {
+      "name": "aa",
+      "lastname": "aa",
+      "email": "abcd@gmail.com",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "name": "aa",
+      "lastname": "aa",
+      "email": "abch@gmail.com",
+      "password": "123",
+      "id": 4
     }
   ]
 }

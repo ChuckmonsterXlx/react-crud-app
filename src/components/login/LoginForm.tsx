@@ -5,44 +5,48 @@ import styles from "./loginForm.module.css";
 
 const LoginForm = () => {
     const { users } = useAppSelector((state) => state);
-    const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState('');
+    const [errorLogin, setErrorLogin] = useState(false);
+    
+    interface IUserLogin {
+        email: string;
+        password: string;
+    }
+    const [userLogin, setUserLogin] = useState<IUserLogin>({
+        email: "",
+        password: ""
+    });
+    
+    
 
-    const handleChange = (e:any) => {
-        if(e.target.name === "email") {
-            setEmail(e.target.value)
-        }
-        else if(e.target.name === "password") {
-            setPassword(e.target.value)
-        }
-        else {
-            console.log("error in input")
-        }
+    const handleChange = ({target: {name, value}}: {target: {name: string, value: string}}) => {
+        setUserLogin({...userLogin, [name]: value});
     }
 
     const handleSubmit = (e:any) => {
         e.preventDefault();
         
         for (let i = 0; i < users.length; i++) {
-            if (email === users[i].email && password === users[i].password)
+            if (userLogin.email === users[i].email && userLogin.password === users[i].password)
             {
+                setErrorLogin(false);
                 return console.log("Has iniciado sesion");
             }
         }
 
         console.log("Email o password incorrectos");
-
+        setErrorLogin(true)
     }
 
     return (
         <div className={styles.formContainer}>
             <form className={styles.loginForm} onSubmit={handleSubmit}>
                 <p>Login</p>
+                {errorLogin && <p className={styles.errorText}>wrong email or password</p>}
                 <div>
-                    <input type='email' placeholder='email' name="email" onChange={handleChange}/>
+                    <input type='email' placeholder='email' name="email" onChange={handleChange} required/>
                 </div>
                 <div>
-                    <input type='password' placeholder='password' name="password" onChange={handleChange} />
+                    <input type='password' placeholder='password' name="password" onChange={handleChange} required/>
                 </div>
                 <div>
                     <button type='submit'>Login</button>

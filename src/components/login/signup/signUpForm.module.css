@@ -22,3 +22,7 @@
     font-family: fantasy;
     font-weight: 800;
 }
+
+.errorEmail {
+    color: red;
+}
