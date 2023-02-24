@@ -25,5 +25,18 @@
       "content": "LAKBDNS\nKanslkdna'lkSDNLK'ansdlkansas,dn;a\na;lsdlamSD;Asda",
       "id": 16
     }
+  ],
+
+  "users": [
+    {
+      "email": "alfonso@gmail.com",
+      "password": "12345",
+      "id": 1
+    },
+    {
+      "email": "isma@gmail.com",
+      "password": "12345",
+      "id": 1
+    }
   ]
 }
