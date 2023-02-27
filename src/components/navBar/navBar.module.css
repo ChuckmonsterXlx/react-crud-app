@@ -25,10 +25,12 @@
     text-decoration: inherit;
     display: flex;
 }
+.navContainer .textList {
+    display: flex;
+}
 
 .iconContainer {
     width: 20px;
     text-align: center;
     margin-right: 5px;
 }
-

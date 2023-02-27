@@ -5,16 +5,25 @@ import styles from "./navBar.module.css";
 
 //font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faHome, faBorderAll, faUser } from "@fortawesome/free-solid-svg-icons";
-import { useAppSelector } from "../../hooks/redux";
+import { faBars, faHome, faBorderAll, faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { setVerifedUser } from "../../redux/slices/verifedUser";
 
 const NavBar = () => {
+    const dispatch = useAppDispatch();
     const { verifedUser } = useAppSelector((state) => state);
 
     const [hideShowNav, setHideShowNav] = useState(false);
 
     const onHideShowNav = () => {
         setHideShowNav(!hideShowNav)
+    }
+
+    const onLogOut = () => {
+         dispatch(setVerifedUser({
+            login: false,
+            idUser: "",
+         }))
     }
 
     return (
@@ -31,6 +40,9 @@ const NavBar = () => {
                             </li>
                             <li>
                                 <Link to="/dashboard"><div className={styles.iconContainer}><FontAwesomeIcon icon={faBorderAll}/></div>{hideShowNav && 'Dashboard'}</Link>   
+                            </li>
+                            <li>
+                                <div onClick={onLogOut} className={styles.textList}><div className={styles.iconContainer}><FontAwesomeIcon icon={faSignOutAlt}/></div>{hideShowNav && 'LogOut'}</div>   
                             </li>
                         </>
                     :
