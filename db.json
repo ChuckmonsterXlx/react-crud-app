@@ -54,6 +54,13 @@
       "email": "abch@gmail.com",
       "password": "123",
       "id": 4
+    },
+    {
+      "name": "alfonso",
+      "lastname": "velarde",
+      "email": "alfonso@gmail.com",
+      "password": "123456",
+      "id": 5
     }
   ]
 }

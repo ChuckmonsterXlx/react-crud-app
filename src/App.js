@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes,
+  useActionData,
+} from "react-router-dom";
 import Home from "./pages/Home.tsx";
 import "./App.css";
 import Dashboard from "./pages/Dashboard.tsx";
@@ -10,8 +16,12 @@ import NavBar from "./components/navBar/NavBar";
 import Login from "./pages/Login.tsx";
 import SignUpForm from "./pages/SignUp.tsx";
 
+import { ProtectedRoute } from "./components/protectedRoute/ProtectedRoute";
+
 function App() {
   const dispatch = useAppDispatch();
+
+  const { verifedUser } = useAppSelector((state) => state);
 
   useEffect(() => {
     fetch("http://localhost:3001/posts")
@@ -28,14 +38,31 @@ function App() {
       })
       .catch((error) => console.log(error));
   }, []);
+  useEffect(() => {
+    console.log(verifedUser);
+  }, [verifedUser]);
 
   return (
     <div className="App">
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUpForm />} />
         </Routes>

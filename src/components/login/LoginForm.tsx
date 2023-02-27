@@ -1,11 +1,18 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useAppSelector } from "../../hooks/redux";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { setVerifedUser } from "../../redux/slices/verifedUser";
 import styles from "./loginForm.module.css";
 
 const LoginForm = () => {
+    const navigate = useNavigate();
     const { users } = useAppSelector((state) => state);
     const [errorLogin, setErrorLogin] = useState(false);
+    const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+
+    const { verifedUser } = useAppSelector((state) => state);
+
+    const dispatch = useAppDispatch();
     
     interface IUserLogin {
         email: string;
@@ -15,8 +22,6 @@ const LoginForm = () => {
         email: "",
         password: ""
     });
-    
-    
 
     const handleChange = ({target: {name, value}}: {target: {name: string, value: string}}) => {
         setUserLogin({...userLogin, [name]: value});
@@ -29,13 +34,27 @@ const LoginForm = () => {
             if (userLogin.email === users[i].email && userLogin.password === users[i].password)
             {
                 setErrorLogin(false);
-                return console.log("Has iniciado sesion");
+                dispatch(setVerifedUser({
+                    login: true,
+                    idUser: users[i].id
+                }))
+                setIsLoggedIn(true);
+                return
             }
         }
 
         console.log("Email o password incorrectos");
         setErrorLogin(true)
     }
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            if (verifedUser.login) {
+                console.log("Deberias ir al home");
+                navigate("/");
+            }
+        }
+    }, [isLoggedIn, verifedUser.login])
 
     return (
         <div className={styles.formContainer}>
