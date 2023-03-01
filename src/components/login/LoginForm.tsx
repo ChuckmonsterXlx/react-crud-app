@@ -31,7 +31,7 @@ const LoginForm = () => {
         e.preventDefault();
         
         for (let i = 0; i < users.length; i++) {
-            if (userLogin.email === users[i].email && userLogin.password === users[i].password)
+            if (userLogin.email == users[i].email && userLogin.password === users[i].password)
             {
                 setErrorLogin(false);
                 dispatch(setVerifedUser({
@@ -39,7 +39,8 @@ const LoginForm = () => {
                     userId: users[i].id,
                     name: users[i].name,
                     lastName: users[i].lastName,
-                    email: users[i].email
+                    email: users[i].email,
+                    role: users[i].role
                 }))
                 setIsLoggedIn(true);
                 return

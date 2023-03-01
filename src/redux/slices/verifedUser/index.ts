@@ -6,6 +6,7 @@ export interface IVerifedUser {
     name: string;
     lastName: string;
     email: string;
+    role: string;
 }
 
 const initialState: IVerifedUser = {
@@ -13,7 +14,8 @@ const initialState: IVerifedUser = {
     userId: '',
     name: '',
     lastName: '',
-    email: ''
+    email: '',
+    role: ''
 };
 
 const verifedUserSlice = createSlice({

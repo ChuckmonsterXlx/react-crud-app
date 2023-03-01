@@ -25,7 +25,8 @@ const NavBar = () => {
             userId: "",
             name: '',
             lastName: '',
-            email: ''
+            email: '',
+            role: ''
          }))
     }
 

@@ -7,12 +7,6 @@
       "id": 19
     },
     {
-      "title": "new note  for Alfonso account",
-      "content": "this is a new sample note",
-      "userId": 2,
-      "id": 20
-    },
-    {
       "title": "new note for Ismael",
       "content": "this is a new note for Ismael",
       "userId": 3,
@@ -25,21 +19,24 @@
       "lastName": "Aceves",
       "email": "josue@gmail.com",
       "password": "123456",
-      "id": 1
-    },
-    {
-      "name": "Alfonso",
-      "lastName": "Velarde",
-      "email": "alfonso@gmail.com",
-      "password": "123",
-      "id": 2
+      "id": 1,
+      "role": "admin"
     },
     {
       "name": "Ismael",
       "lastName": "Aceves",
       "email": "ismael@gmail.com",
       "password": "123",
-      "id": 3
+      "id": 3,
+      "role": "admin"
+    },
+    {
+      "name": "Alfonso",
+      "lastName": "Velarde",
+      "email": "Alfonso@gmail.com",
+      "password": "123",
+      "role": "member",
+      "id": 4
     }
   ]
 }

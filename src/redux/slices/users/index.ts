@@ -6,6 +6,7 @@ export interface IUser {
     id: string;
     name: string;
     lastName: string;
+    role: string;
 }
 
 const initialState: IUser[] = [];

@@ -15,6 +15,7 @@ const SignUpForm = () => {
         lastName: string;
         email: string;
         password: string;
+        role: string;
     }
 
     const [userRegister, setUserRegister] = useState<IUserRegister>({
@@ -22,6 +23,7 @@ const SignUpForm = () => {
         lastName: "",
         email: "",
         password: "",
+        role: "member"
     });
 
     const handleChange = ({target: {name, value}}: {target: {name: string, value: string}}) => {
