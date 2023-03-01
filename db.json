@@ -1,29 +1,16 @@
 {
   "posts": [
     {
-      "title": "Esta es una de Isma",
-      "content": "Estamos trabajando con React y json server Estamos trabajando con React y json server como mock",
-      "id": 7
+      "title": "new note to verifed user id",
+      "content": "just tryning to verifed user id",
+      "userId": 5,
+      "id": 18
     },
     {
-      "title": "Nota 3",
-      "content": "Contenido de la nota 2",
-      "id": 10
-    },
-    {
-      "title": "title",
-      "content": "all content goes here\n",
-      "id": 14
-    },
-    {
-      "title": "new titles",
-      "content": "This is a new notes",
-      "id": 15
-    },
-    {
-      "title": "new note",
-      "content": "more notes addded\n",
-      "id": 16
+      "title": "this note belongs to josue",
+      "content": "just verifying this note belongs to josue",
+      "userId": 1,
+      "id": 19
     }
   ],
   "users": [
@@ -33,27 +20,6 @@
       "email": "josue@gmail.com",
       "password": "123456",
       "id": 1
-    },
-    {
-      "name": "a",
-      "lastname": "a",
-      "email": "abc@gmail.com",
-      "password": "123456",
-      "id": 2
-    },
-    {
-      "name": "aa",
-      "lastname": "aa",
-      "email": "abcd@gmail.com",
-      "password": "123",
-      "id": 3
-    },
-    {
-      "name": "aa",
-      "lastname": "aa",
-      "email": "abch@gmail.com",
-      "password": "123",
-      "id": 4
     },
     {
       "name": "alfonso",

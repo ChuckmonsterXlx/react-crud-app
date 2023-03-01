@@ -22,7 +22,7 @@ const NavBar = () => {
     const onLogOut = () => {
          dispatch(setVerifedUser({
             login: false,
-            idUser: "",
+            userId: "",
          }))
     }
 

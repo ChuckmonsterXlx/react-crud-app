@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Bienvenido, usuario {verifedUser.idUser}</h1>
+      <h1>Bienvenido, usuario {verifedUser.userId}</h1>
     </div>
   )
 }

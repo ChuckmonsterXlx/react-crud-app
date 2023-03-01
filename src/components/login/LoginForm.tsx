@@ -36,7 +36,7 @@ const LoginForm = () => {
                 setErrorLogin(false);
                 dispatch(setVerifedUser({
                     login: true,
-                    idUser: users[i].id
+                    userId: users[i].id
                 }))
                 setIsLoggedIn(true);
                 return

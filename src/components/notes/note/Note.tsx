@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import styles from './note.module.css'
+import { INote } from '../../../redux/slices/notes/index'
 
 // fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,8 +9,10 @@ import { faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { setNotes } from '../../../redux/slices/notes';
 
 const Note = () => {
-    const { notes } = useAppSelector((state) => state);
+    const { notes, verifedUser } = useAppSelector((state) => state);
     const noteRefs = useRef<(any | null)[]>([]);
+
+    const [filterNotesByUser, setFilterNotesByUser] = useState<INote[]>([]);
 
     const [lastRef, setLastRef] = useState(null);
     const [editMode, setEditMode] = useState(false);
@@ -136,8 +139,14 @@ const Note = () => {
         setLastRef(noteRefs.current[noteRefs.current.length - 1]);
     };
 
+    const updateNotesByUser = () => {
+        const filteredNotes = notes.filter((note) => note.userId === verifedUser.userId)
+        setFilterNotesByUser(filteredNotes);
+    }
+
     useEffect(() => {
         updateNoteRef();
+        updateNotesByUser();
     }, [notes]);
 
     return (
@@ -145,8 +154,8 @@ const Note = () => {
             <div className={styles.mainContainerNotes}>
                 <div className='columnA'>
                     {
-                        notes ?
-                            notes.map((note, index) => {
+                        filterNotesByUser ?
+                            filterNotesByUser.map((note, index) => {
                                 if (index % 3 === 0) {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
@@ -171,8 +180,8 @@ const Note = () => {
                 </div>
                 <div className='columnB'>
                     {
-                        notes ?
-                            notes.map((note, index) => {
+                        filterNotesByUser ?
+                            filterNotesByUser.map((note, index) => {
                                 if (index % 3 === 1) {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
@@ -197,8 +206,8 @@ const Note = () => {
                 </div>
                 <div className='columnC'>
                     {
-                        notes ?
-                            notes.map((note, index) => {
+                        filterNotesByUser ?
+                            filterNotesByUser.map((note, index) => {
                                 if (index % 3 === 2) {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>

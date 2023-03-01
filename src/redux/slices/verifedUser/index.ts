@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface IVerifedUser {
     login: boolean;
-    idUser: string;
+    userId: string;
 }
 
 const initialState: IVerifedUser = {
     login: false,
-    idUser: ''
+    userId: ''
 };
 
 const verifedUserSlice = createSlice({
