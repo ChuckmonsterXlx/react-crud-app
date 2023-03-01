@@ -31,7 +31,7 @@ const LoginForm = () => {
         e.preventDefault();
         
         for (let i = 0; i < users.length; i++) {
-            if (userLogin.email == users[i].email && userLogin.password === users[i].password)
+            if (userLogin.email === users[i].email && userLogin.password === users[i].password)
             {
                 setErrorLogin(false);
                 dispatch(setVerifedUser({

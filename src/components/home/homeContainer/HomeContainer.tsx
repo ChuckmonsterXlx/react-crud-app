@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAppSelector } from '../../../hooks/redux';
+import AdminView from '../adminView/AdminView';
 import styles from './homeContainer.module.css'
 
 const HomeContainer = () => {
@@ -15,7 +16,7 @@ const HomeContainer = () => {
       <div>
         { 
           verifedUser.role === 'admin' ? 
-            <h1>Eres un administrador</h1>
+            <AdminView />
           : verifedUser.role === 'member' ?
             <h1>Eres un miembro</h1>
           : <h1>Tienes un error en el role</h1>
