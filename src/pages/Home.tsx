@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Bienvenido!  {verifedUser.name} {verifedUser.lastName}</h1>
+      <h1>Welcome!  {verifedUser.name} {verifedUser.lastName}</h1>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { setUsers } from "../../../redux/slices/users";
 import styles from "./signUpForm.module.css";
@@ -8,6 +8,7 @@ const SignUpForm = () => {
     const { users } = useAppSelector((state) => state);
     const [errorEmailInUse, setErrorEmailInUse] = useState(false);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     interface IUserRegister {
         name: string;
@@ -51,7 +52,8 @@ const SignUpForm = () => {
                 .then(res => res.json())
                 .then(data => {
                     updateUsers();
-                    setErrorEmailInUse(false)
+                    setErrorEmailInUse(false);
+                    navigate('/login');
                 })
                 .catch(error => {
                     console.error('Ha ocurrido un error:', error);
