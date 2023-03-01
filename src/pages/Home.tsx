@@ -1,13 +1,10 @@
 import React from 'react'
-import { useAppSelector, useAppDispatch } from '../hooks/redux/index'
+import HomeContainer from '../components/home/homeContainer/HomeContainer';
 
 const Home = () => {
-  const { notes, verifedUser } = useAppSelector((state) => state);
 
   return (
-    <div>
-      <h1>Welcome!  {verifedUser.name} {verifedUser.lastName}</h1>
-    </div>
+    <HomeContainer/>
   )
 }
 
