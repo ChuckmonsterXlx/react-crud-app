@@ -1,17 +1,6 @@
 {
   "posts": [
-    {
-      "title": "this note belongs to josue",
-      "content": "just verifying this note belongs to josue",
-      "userId": 1,
-      "id": 19
-    },
-    {
-      "title": "new note for Ismael",
-      "content": "this is a new note for Ismael",
-      "userId": 3,
-      "id": 21
-    }
+   
   ],
   "users": [
     {
@@ -37,6 +26,14 @@
       "password": "123",
       "role": "member",
       "id": 4
+    },
+    {
+      "name": "Isac",
+      "lastName": "Medina",
+      "email": "isac@gmail.com",
+      "password": "123",
+      "role": "member",
+      "id": 5
     }
   ]
 }

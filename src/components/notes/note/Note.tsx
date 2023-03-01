@@ -21,7 +21,8 @@ const Note = () => {
 
     const [singledata, setSingledata] = useState({
         title: '',
-        content: ''
+        content: '',
+        userId: ''
     });
 
     const deleteNote = (noteID:string) => {
@@ -36,7 +37,8 @@ const Note = () => {
         .then(data => {
           setSingledata({
             title: "",
-            content: ""
+            content: "",
+            userId: ''
           });
           updateNotes();
         })
@@ -105,7 +107,8 @@ const Note = () => {
     const updateNote = async (noteID:string, title:string, content:string) => {
         const data = {
             title: title,
-            content: content
+            content: content,
+            userId: verifedUser.userId
         };
         fetch("http://localhost:3001/posts/" + noteID, {
           method: "PUT",
