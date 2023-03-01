@@ -15,18 +15,11 @@
   ],
   "users": [
     {
-      "name": "josue",
+      "name": "Josue",
       "lastName": "Aceves",
       "email": "josue@gmail.com",
       "password": "123456",
       "id": 1
-    },
-    {
-      "name": "alfonso",
-      "lastname": "velarde",
-      "email": "alfonso@gmail.com",
-      "password": "123456",
-      "id": 5
     }
   ]
 }

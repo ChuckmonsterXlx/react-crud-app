@@ -23,6 +23,9 @@ const NavBar = () => {
          dispatch(setVerifedUser({
             login: false,
             userId: "",
+            name: '',
+            lastName: '',
+            email: ''
          }))
     }
 

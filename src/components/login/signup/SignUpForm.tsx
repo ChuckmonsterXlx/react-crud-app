@@ -11,14 +11,14 @@ const SignUpForm = () => {
 
     interface IUserRegister {
         name: string;
-        lastname: string;
+        lastName: string;
         email: string;
         password: string;
     }
 
     const [userRegister, setUserRegister] = useState<IUserRegister>({
         name: "",
-        lastname: "",
+        lastName: "",
         email: "",
         password: "",
     });
@@ -76,7 +76,7 @@ const SignUpForm = () => {
                     <input type='text' placeholder='name' name="name" onChange={handleChange} required/>
                 </div>
                 <div>
-                    <input type='text' placeholder='last name' name="lastname" onChange={handleChange} required/>
+                    <input type='text' placeholder='last name' name="lastName" onChange={handleChange} required/>
                 </div>
                 <div>
                     <input type='email' placeholder='email' name="email" onChange={handleChange} required/>
