@@ -29,9 +29,13 @@ const LoginForm = () => {
 
     const handleSubmit = (e:any) => {
         e.preventDefault();
+
+        let emailL = userLogin.email.toLowerCase();
+        let emailLDB = '';
         
         for (let i = 0; i < users.length; i++) {
-            if (userLogin.email === users[i].email && userLogin.password === users[i].password)
+            emailLDB = users[i].email.toLowerCase();
+            if (emailL === emailLDB && userLogin.password === users[i].password)
             {
                 setErrorLogin(false);
                 dispatch(setVerifedUser({
