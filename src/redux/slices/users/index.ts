@@ -7,6 +7,7 @@ export interface IUser {
     name: string;
     lastName: string;
     role: string;
+    urlProfileImg: string;
 }
 
 const initialState: IUser[] = [];

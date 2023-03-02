@@ -44,7 +44,8 @@ const LoginForm = () => {
                     name: users[i].name,
                     lastName: users[i].lastName,
                     email: users[i].email,
-                    role: users[i].role
+                    role: users[i].role,
+                    urlProfileImg: users[i].urlProfileImg,
                 }))
                 setIsLoggedIn(true);
                 return

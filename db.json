@@ -1,31 +1,23 @@
 {
-  "posts": [
-   
-  ],
+  "posts": [],
   "users": [
     {
-      "name": "Josue",
-      "lastName": "Aceves",
-      "email": "josue@gmail.com",
-      "password": "123456",
-      "id": 1,
-      "role": "admin"
-    },
-    {
-      "name": "Ismael",
-      "lastName": "Aceves",
-      "email": "ismael@gmail.com",
+      "name": "Raul",
+      "lastName": "Ramirez",
+      "email": "raul@gmail.com",
       "password": "123",
-      "id": 3,
-      "role": "admin"
+      "role": "member",
+      "urlProfileImg": "https://i0.wp.com/www.jbox.com.br/wp/wp-content/uploads/2021/06/superman-gourmet-poster.jpg",
+      "id": 6
     },
     {
       "name": "Alfonso",
       "lastName": "Velarde",
-      "email": "Alfonso@gmail.com",
+      "email": "alfonso@gmail.com",
       "password": "123",
       "role": "member",
-      "id": 4
+      "urlProfileImg": "https://i0.wp.com/www.jbox.com.br/wp/wp-content/uploads/2021/06/superman-gourmet-poster.jpg",
+      "id": 7
     },
     {
       "name": "Isac",
@@ -33,7 +25,8 @@
       "email": "isac@gmail.com",
       "password": "123",
       "role": "member",
-      "id": 5
+      "urlProfileImg": "http://cdn.shopify.com/s/files/1/0337/2993/7548/products/21wbtb00071a-001-rainy-knight-141-swatch_1024x.jpg",
+      "id": 8
     }
   ]
 }

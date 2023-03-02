@@ -6,11 +6,12 @@ import styles from './homeContainer.module.css'
 const HomeContainer = () => {
   const { notes, verifedUser } = useAppSelector((state) => state);
 
+  let urlProfileImg = verifedUser.urlProfileImg;
 
   return (
     <div className={styles.mainContainer }>
       <div className={ styles.topContainer }>
-        <div className={styles.img}></div>
+        <div className={styles.img} style={{backgroundImage:`url(${urlProfileImg})`}}></div>
         <h1>Welcome!  {verifedUser.name} {verifedUser.lastName}</h1>
       </div>
       <div>

@@ -26,7 +26,8 @@ const NavBar = () => {
             name: '',
             lastName: '',
             email: '',
-            role: ''
+            role: '',
+            urlProfileImg: ''
          }))
     }
 
