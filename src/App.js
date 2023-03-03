@@ -15,6 +15,7 @@ import { setUsers } from "./redux/slices/users/index";
 import NavBar from "./components/navBar/NavBar";
 import Login from "./pages/Login.tsx";
 import SignUpForm from "./pages/SignUp.tsx";
+import Settings from "./pages/Settings.tsx";
 
 import { ProtectedRoute } from "./components/protectedRoute/ProtectedRoute";
 
@@ -60,6 +61,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
               </ProtectedRoute>
             }
           />

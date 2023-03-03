@@ -2,14 +2,16 @@
     border: 1px solid;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    max-width: max-content;
+    margin: 0 auto;
 }
- .table {
+.table {
     border-collapse: collapse;
     border-style: hidden;
     border-radius: 5px;
 }
 
- .table th,  .table td {
+.table th, .table td {
     border: 1px solid;
     min-width: 80px;
     padding: 3px 10px
