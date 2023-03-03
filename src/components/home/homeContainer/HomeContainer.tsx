@@ -6,8 +6,10 @@ import styles from './homeContainer.module.css'
 const HomeContainer = () => {
   const { notes, verifedUser } = useAppSelector((state) => state);
 
-  let urlProfileImg = verifedUser.urlProfileImg;
+  let urlProfileImg = verifedUser.profileImg.url;
 
+  console.log(verifedUser);
+  
   return (
     <div className={styles.mainContainer }>
       <div className={ styles.topContainer }>

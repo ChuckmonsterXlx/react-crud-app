@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IProfileImg } from '../verifedUser';
 
 export interface IUser {
     email: string;
@@ -7,7 +8,7 @@ export interface IUser {
     name: string;
     lastName: string;
     role: string;
-    urlProfileImg: string;
+    profileImg: IProfileImg;
 }
 
 const initialState: IUser[] = [];

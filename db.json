@@ -2,31 +2,29 @@
   "posts": [],
   "users": [
     {
-      "name": "Raul",
-      "lastName": "Ramirez",
-      "email": "raul@gmail.com",
-      "password": "123",
-      "role": "member",
-      "urlProfileImg": "https://i0.wp.com/www.jbox.com.br/wp/wp-content/uploads/2021/06/superman-gourmet-poster.jpg",
-      "id": 6
-    },
-    {
       "name": "Alfonso",
       "lastName": "Velarde",
       "email": "alfonso@gmail.com",
       "password": "123",
       "role": "member",
-      "urlProfileImg": "https://i0.wp.com/www.jbox.com.br/wp/wp-content/uploads/2021/06/superman-gourmet-poster.jpg",
-      "id": 7
+      "profileImg": {
+        "label": "Superman",
+        "value": "superman",
+        "url": "https://i0.wp.com/www.jbox.com.br/wp/wp-content/uploads/2021/06/superman-gourmet-poster.jpg"
+      },
+      "id": 1
+    }
+  ],
+  "profileImgs": [
+    {
+      "label": "Batman",
+      "value": "batman",
+      "url": "http://cdn.shopify.com/s/files/1/0337/2993/7548/products/21wbtb00071a-001-rainy-knight-141-swatch_1024x.jpg"
     },
     {
-      "name": "Isac",
-      "lastName": "Medina",
-      "email": "isac@gmail.com",
-      "password": "123",
-      "role": "member",
-      "urlProfileImg": "http://cdn.shopify.com/s/files/1/0337/2993/7548/products/21wbtb00071a-001-rainy-knight-141-swatch_1024x.jpg",
-      "id": 8
+      "label": "Superman",
+      "value": "superman",
+      "url": "https://i0.wp.com/www.jbox.com.br/wp/wp-content/uploads/2021/06/superman-gourmet-poster.jpg"
     }
   ]
 }

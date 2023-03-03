@@ -7,7 +7,12 @@ export interface IVerifedUser {
     lastName: string;
     email: string;
     role: string;
-    urlProfileImg: string;
+    profileImg: IProfileImg;
+}
+export interface IProfileImg {
+    label: string,
+    value: string,
+    url: string
 }
 
 const initialState: IVerifedUser = {
@@ -17,7 +22,7 @@ const initialState: IVerifedUser = {
     lastName: '',
     email: '',
     role: '',
-    urlProfileImg: ''
+    profileImg: {label: '', value: '', url: ''}
 };
 
 const verifedUserSlice = createSlice({

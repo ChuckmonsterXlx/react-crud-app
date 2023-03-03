@@ -27,7 +27,7 @@ const NavBar = () => {
             lastName: '',
             email: '',
             role: '',
-            urlProfileImg: ''
+            profileImg: {label: '', value: '', url: ''}
          }))
     }
 

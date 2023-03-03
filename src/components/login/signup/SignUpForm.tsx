@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { setUsers } from "../../../redux/slices/users";
+import { IProfileImg } from "../../../redux/slices/verifedUser";
 import styles from "./signUpForm.module.css";
 
 const SignUpForm = () => {
@@ -10,18 +11,20 @@ const SignUpForm = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [ imgOptionSelected, setImgOptionSelected ] = useState("");
-    const optionsImg = [
-        {label:"Batman", value: "batman", url: "http://cdn.shopify.com/s/files/1/0337/2993/7548/products/21wbtb00071a-001-rainy-knight-141-swatch_1024x.jpg"},
-        {label:"Superman", value: "superman", url: "https://i0.wp.com/www.jbox.com.br/wp/wp-content/uploads/2021/06/superman-gourmet-poster.jpg"}
-    ]
+    const [optionsImg, setOptionImg] = useState<IOptionsImg[]>([])
 
+    interface IOptionsImg {
+        label: string,
+        value: string,
+        url: string
+    }
     interface IUserRegister {
         name: string;
         lastName: string;
         email: string;
         password: string;
         role: string;
-        urlProfileImg: string;
+        profileImg: IProfileImg;
     }
 
     const [userRegister, setUserRegister] = useState<IUserRegister>({
@@ -30,7 +33,7 @@ const SignUpForm = () => {
         email: "",
         password: "",
         role: "member",
-        urlProfileImg: "",
+        profileImg: {label: "", value: "", url: ""},
     });
 
     const handleChange = ({target: {name, value}}: {target: {name: string, value: string}}) => {
@@ -41,7 +44,7 @@ const SignUpForm = () => {
         const selectedOption = optionsImg.find((option) => option.value === selectedValue);
         if (selectedOption) {
             setImgOptionSelected(selectedOption.value);
-            setUserRegister({ ...userRegister, [event.target.name]: selectedOption.url });
+            setUserRegister({ ...userRegister, [event.target.name]: selectedOption });
         }
     };
 
@@ -82,6 +85,19 @@ const SignUpForm = () => {
         }
     }
 
+    const updateOptionsImg = () => {
+        fetch("http://localhost:3001/profileImgs")
+            .then((res) => res.json())
+            .then((res) => {
+                setOptionImg(res)
+                console.log(res);
+            })
+            .catch((error) => console.error(error));
+    }
+
+    useEffect(() => {
+        updateOptionsImg();
+    }, [])
     useEffect(() => {
         console.log(imgOptionSelected);
     }, [imgOptionSelected]);
@@ -95,7 +111,7 @@ const SignUpForm = () => {
                 <p>SignUp Form</p>
                 {errorEmailInUse && <p className={styles.errorEmail}>Email in use</p>}
                 <div>
-                    <select name="urlProfileImg" value={imgOptionSelected} onChange={handleImgChange}>
+                    <select name="profileImg" value={imgOptionSelected} onChange={handleImgChange}>
                         <option value="">Select a picture image</option>
                         {optionsImg.map((option, index) => (
                             <option key={index} value={option.value}>
