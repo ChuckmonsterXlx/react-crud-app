@@ -13,14 +13,11 @@ const SettingsContainer = () => {
     const [visibleEditProfileImg, setVisibleEditProfileImg] = useState(false);
     const [visibleEditName, setVisibleEditName] = useState(false);
     const [visibleEditLastName, setVisibleEditLastName] = useState(false);
+    const [visibleBtnUpdate, setVisibleBtnUpdate] = useState(false);
     const indicatorPI = 'profileImg';
     const indicatorN = 'iName';
     const indicatorLN = 'iLastName';
-    const [updatePictureImg, setUpdatePictureImage] = useState<IProfileImg>({
-        label: '', value: '', url: ''
-    });
-    const [updateName, setUpdateName] = useState('');
-    const [updateLastName, setUpdateLastName] = useState('');
+    const [whenChange, setWhenChange] = useState(false);
 
     interface IOptionsImg {
         label: string,
@@ -37,6 +34,11 @@ const SettingsContainer = () => {
         lastName: verifedUser.lastName,
         profileImg: verifedUser.profileImg,
     });
+    const [userCopy, setUserCopy] = useState<IUserRegister>({
+        name: verifedUser.name,
+        lastName: verifedUser.lastName,
+        profileImg: verifedUser.profileImg
+    })
 
     const handleImgChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedValue = event.target.value;
@@ -62,6 +64,7 @@ const SettingsContainer = () => {
     }
 
     const handleVisibleEdit = (indicator:string) => {
+        setVisibleBtnUpdate(true);
         switch (indicator) {
             case 'profileImg':
                 setVisibleEditProfileImg(!visibleEditProfileImg);
@@ -81,18 +84,37 @@ const SettingsContainer = () => {
     }
 
     const onUpdate = () => {
-        // const entriesA = Object.entries(verifedUser);
-        // const entriesB = Object.entries(userRegister);
-
-        // if (entriesA === entriesB && entriesA.every(([key, value]) => userRegister.hasOwnProperty(key) && userRegister[key] === value))
 
         console.log(userRegister);
 
     }
 
+    const cancelUpdate = () => {
+        setVisibleBtnUpdate(false)
+        setVisibleEditProfileImg(false);
+        setVisibleEditName(false);
+        setVisibleEditLastName(false);
+        setUserRegister({
+            profileImg: verifedUser.profileImg,
+            name: verifedUser.name,
+            lastName: verifedUser.lastName
+        })
+    }
+
     useEffect(() => {
         updateOptionsImg();
     }, []);
+    useEffect(() => {
+        if ( verifedUser.profileImg.value === userRegister.profileImg.value 
+            && verifedUser.name === userRegister.name 
+            && verifedUser.lastName === userRegister.lastName ) {
+                console.log("Coincide");
+                setWhenChange(false);
+        } else {
+            console.log("No coincide");
+            setWhenChange(true);
+        }
+    }, [verifedUser, userRegister])
 
     return(
     <>
@@ -145,10 +167,15 @@ const SettingsContainer = () => {
                 </tbody>
             </table>
         </div>
-        <div>
-            <button>Cancel</button>
-            <button onClick={onUpdate}>Update</button>
-        </div>
+        {
+            visibleBtnUpdate ?
+                <div>
+                    <button onClick={cancelUpdate}>Cancel</button>
+                    <button disabled={!whenChange} onClick={onUpdate}>Update</button>
+                </div>
+            :
+                null
+        }
     </>
    )
 }
