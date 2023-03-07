@@ -1,19 +1,9 @@
 {
-  "posts": [
-    {
-      "title": "new note",
-      "content": "this is a new note",
-      "userId": 1,
-      "id": 1
-    }
-  ],
+  "posts": [],
   "users": [
     {
-      "name": "Alfonso",
-      "lastName": "Velarde",
-      "email": "alfonso@gmail.com",
-      "password": "123",
-      "role": "member",
+      "name": "Alfonso2",
+      "lastName": "Velarde2",
       "profileImg": {
         "label": "Superman",
         "value": "superman",

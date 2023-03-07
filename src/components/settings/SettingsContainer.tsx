@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
-import { useAppSelector } from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import styles from './settingsContainer.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faHome, faBorderAll, faUser, faSignOutAlt, faCog, faEdit } from "@fortawesome/free-solid-svg-icons";
-import { IProfileImg } from "../../redux/slices/verifedUser";
+import { IProfileImg, setVerifedUser } from "../../redux/slices/verifedUser";
 
 const SettingsContainer = () => {
 
@@ -18,6 +18,7 @@ const SettingsContainer = () => {
     const indicatorN = 'iName';
     const indicatorLN = 'iLastName';
     const [whenChange, setWhenChange] = useState(false);
+    const dispatch = useAppDispatch();
 
     interface IOptionsImg {
         label: string,
@@ -85,8 +86,41 @@ const SettingsContainer = () => {
 
     const onUpdate = () => {
 
-        console.log(userRegister);
+        const data = {
+            name: userRegister.name,
+            lastName: userRegister.lastName,
+            profileImg: userRegister.profileImg
+        };
 
+        fetch("http://localhost:3001/users/" + verifedUser.userId, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+          updated();
+        })
+        .catch(error => {
+          console.error('Ha ocurrido un error:', error);
+        });
+
+    }
+
+    const updated = () => {
+        setVisibleBtnUpdate(false)
+        setVisibleEditProfileImg(false);
+        setVisibleEditName(false);
+        setVisibleEditLastName(false);
+
+        dispatch(setVerifedUser({
+            ...verifedUser, 
+            name: userRegister.name,
+            lastName: userRegister.lastName,
+            profileImg: userRegister.profileImg
+        }))
     }
 
     const cancelUpdate = () => {
@@ -103,7 +137,15 @@ const SettingsContainer = () => {
 
     useEffect(() => {
         updateOptionsImg();
+        setImgOptionSelected(verifedUser.profileImg.value);
     }, []);
+    useEffect(() => {
+        setUserRegister({
+            profileImg: verifedUser.profileImg,
+            name: verifedUser.name,
+            lastName: verifedUser.lastName
+        })
+    }, [verifedUser]);
     useEffect(() => {
         if ( verifedUser.profileImg.value === userRegister.profileImg.value 
             && verifedUser.name === userRegister.name 
@@ -114,7 +156,7 @@ const SettingsContainer = () => {
             console.log("No coincide");
             setWhenChange(true);
         }
-    }, [verifedUser, userRegister])
+    }, [verifedUser, userRegister]);
 
     return(
     <>
@@ -128,7 +170,6 @@ const SettingsContainer = () => {
                             {
                                 visibleEditProfileImg ?
                                     <select name="profileImg" value={imgOptionSelected} onChange={handleImgChange}>
-                                        <option value="">Select a picture image</option>
                                         {optionsImg.map((option, index) => (
                                             <option key={index} value={option.value}>
                                                 {option.label}
