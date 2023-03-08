@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAppSelector } from "../../../hooks/redux";
 import styles from "./adminView.module.css" 
 
 const AdminView = () => {
     const { users, verifedUser } = useAppSelector((state) => state);
+    const [optionalRoles, setOptionalRoles] = useState([
+        {label: "Admin", value: "admin"}, {label: "Member", value: "member"}
+    ])
 
     return (
         <>
@@ -23,7 +26,15 @@ const AdminView = () => {
                                 <tr key={index}>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
-                                    <td>{user.role}</td>
+                                    <td>
+                                        <select name="profileImg" value={user.role.value} onChange={() => console.log("Cambio")}>
+                                            {optionalRoles.map((option, index) => (
+                                                <option key={index} value={option.value}>
+                                                    {option.label}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </td>
                                 </tr>
                             ))
                         }

@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { setUsers } from "../../../redux/slices/users";
-import { IProfileImg } from "../../../redux/slices/verifedUser";
+import { IProfileImg, IRole } from "../../../redux/slices/verifedUser";
 import styles from "./signUpForm.module.css";
 
 const SignUpForm = () => {
@@ -23,7 +23,7 @@ const SignUpForm = () => {
         lastName: string;
         email: string;
         password: string;
-        role: string;
+        role: IRole;
         profileImg: IProfileImg;
     }
 
@@ -32,7 +32,7 @@ const SignUpForm = () => {
         lastName: "",
         email: "",
         password: "",
-        role: "member",
+        role: {label: "Member", value: "member"},
         profileImg: {label: "", value: "", url: ""},
     });
 

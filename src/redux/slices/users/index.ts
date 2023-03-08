@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IProfileImg } from '../verifedUser';
+import { IProfileImg, IRole } from '../verifedUser';
 
 export interface IUser {
     email: string;
@@ -7,7 +7,7 @@ export interface IUser {
     id: string;
     name: string;
     lastName: string;
-    role: string;
+    role: IRole;
     profileImg: IProfileImg;
 }
 

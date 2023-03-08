@@ -18,9 +18,9 @@ const HomeContainer = () => {
       </div>
       <div>
         { 
-          verifedUser.role === 'admin' ? 
+          verifedUser.role.value === 'admin' ? 
             <AdminView />
-          : verifedUser.role === 'member' ?
+          : verifedUser.role.value === 'member' ?
             <h1>Eres un miembro</h1>
           : <h1>Tienes un error en el role</h1>
         }

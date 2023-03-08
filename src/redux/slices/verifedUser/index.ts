@@ -6,13 +6,17 @@ export interface IVerifedUser {
     name: string;
     lastName: string;
     email: string;
-    role: string;
+    role: IRole;
     profileImg: IProfileImg;
 }
 export interface IProfileImg {
     label: string,
     value: string,
     url: string
+}
+export interface IRole {
+    label: string,
+    value: string
 }
 
 const initialState: IVerifedUser = {
@@ -21,7 +25,7 @@ const initialState: IVerifedUser = {
     name: '',
     lastName: '',
     email: '',
-    role: '',
+    role: {label: '', value: ''},
     profileImg: {label: '', value: '', url: ''}
 };
 
