@@ -35,11 +35,6 @@ const SettingsContainer = () => {
         lastName: verifedUser.lastName,
         profileImg: verifedUser.profileImg,
     });
-    const [userCopy, setUserCopy] = useState<IUserRegister>({
-        name: verifedUser.name,
-        lastName: verifedUser.lastName,
-        profileImg: verifedUser.profileImg
-    })
 
     const handleImgChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedValue = event.target.value;
@@ -93,7 +88,7 @@ const SettingsContainer = () => {
         };
 
         fetch("http://localhost:3001/users/" + verifedUser.userId, {
-          method: "PUT",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json"
           },

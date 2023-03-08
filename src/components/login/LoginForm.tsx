@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { IUser, setUsers } from "../../redux/slices/users";
 import { setVerifedUser } from "../../redux/slices/verifedUser";
 import styles from "./loginForm.module.css";
 
 const LoginForm = () => {
     const navigate = useNavigate();
-    const { users } = useAppSelector((state) => state);
+    //const { users } = useAppSelector((state) => state);
     const [errorLogin, setErrorLogin] = useState(false);
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
@@ -30,6 +31,16 @@ const LoginForm = () => {
     const handleSubmit = (e:any) => {
         e.preventDefault();
 
+        fetch("http://localhost:3001/users")
+            .then((res) => res.json())
+            .then((res) => {
+                dispatch(setUsers(res));
+                startingSession(res);
+            })
+            .catch((error) => console.log(error));
+    }
+
+    const startingSession = (users:IUser[]) => {
         let emailL = userLogin.email.toLowerCase();
         let emailLDB = '';
         
@@ -55,7 +66,7 @@ const LoginForm = () => {
         console.log("Email o password incorrectos");
         setErrorLogin(true)
     }
-
+    
     useEffect(() => {
         if (isLoggedIn) {
             if (verifedUser.login) {
