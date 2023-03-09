@@ -69,7 +69,17 @@ const AdminView = () => {
               }
               return user;
             });
-            setUsersUpdate([...usersUpdate, { userID: userID, role: selectedOption.value }]);
+            if (!usersUpdate.find((user) => user.userID === userID)){
+                setUsersUpdate([...usersUpdate, { userID: userID, role: selectedOption.value }]);
+            } else {
+                usersUpdate.map((user) => {
+                    if (user.userID === userID) {
+                        user.role = selectedOption.value
+                    }
+                })
+                console.log("Ya se encuentra el user: ", userID)
+            }
+            
             dispatch(setUsers(updatedUsers));
 
           }
