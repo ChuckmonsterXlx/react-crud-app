@@ -11,7 +11,7 @@
     margin: 0 auto;
     border-radius: 5px;
     box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
-    background-color: rgb(160, 165, 166);
+    background-color: rgb(198, 198, 198);
 }
 
 .signUpForm div{
@@ -19,8 +19,9 @@
 }
 
 .signUpForm p {
-    font-family: fantasy;
-    font-weight: 800;
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 0px;
 }
 
 .errorEmail {

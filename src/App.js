@@ -8,12 +8,12 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home.tsx";
 import "./App.css";
-import Dashboard from "./pages/Dashboard.tsx";
+import Dashboard from "./pages/dashboard/Dashboard.tsx";
 import { useAppSelector, useAppDispatch } from "./hooks/redux/index.ts";
 import { setNotes } from "./redux/slices/notes/index.ts";
 import { setUsers } from "./redux/slices/users/index";
 import NavBar from "./components/navBar/NavBar";
-import Login from "./pages/Login.tsx";
+import Login from "./pages/login/Login.tsx";
 import SignUpForm from "./pages/SignUp.tsx";
 import Settings from "./pages/Settings.tsx";
 

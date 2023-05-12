@@ -79,7 +79,7 @@ const LoginForm = () => {
     return (
         <div className={styles.formContainer}>
             <form className={styles.loginForm} onSubmit={handleSubmit}>
-                <p>Login</p>
+                <p>Log in</p>
                 {errorLogin && <p className={styles.errorText}>wrong email or password</p>}
                 <div>
                     <input type='email' placeholder='email' name="email" onChange={handleChange} required/>

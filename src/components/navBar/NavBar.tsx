@@ -2,12 +2,12 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import styles from "./navBar.module.css";
 
-
 //font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faHome, faBorderAll, faUser, faSignOutAlt, faCog } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { setVerifedUser } from "../../redux/slices/verifedUser";
+//font awesome
 
 const NavBar = () => {
     const dispatch = useAppDispatch();
@@ -41,16 +41,36 @@ const NavBar = () => {
                     verifedUser.login ? 
                         <>
                             <li>
-                                <Link to="/"><div className={styles.iconContainer}><FontAwesomeIcon icon={faHome}/></div>{ hideShowNav && 'Home'}</Link>
+                                <Link to="/">
+                                    <div className={styles.iconContainer}>
+                                        <FontAwesomeIcon icon={faHome}/>
+                                    </div>
+                                    { hideShowNav && <div className={ styles.nameBtn }>Home</div>}
+                                </Link>
                             </li>
                             <li>
-                                <Link to="/dashboard"><div className={styles.iconContainer}><FontAwesomeIcon icon={faBorderAll}/></div>{hideShowNav && 'Dashboard'}</Link>   
+                                <Link to="/dashboard">
+                                    <div className={styles.iconContainer}>
+                                        <FontAwesomeIcon icon={faBorderAll}/>
+                                    </div>
+                                    {hideShowNav && <div className={ styles.nameBtn }>Dashboard</div>}
+                                </Link>   
                             </li>
                             <li>
-                                <Link to="/settings"><div className={styles.iconContainer}><FontAwesomeIcon icon={faCog}/></div>{hideShowNav && 'Settings'}</Link>   
+                                <Link to="/settings">
+                                    <div className={styles.iconContainer}>
+                                        <FontAwesomeIcon icon={faCog}/>
+                                    </div>
+                                    {hideShowNav && <div className={ styles.nameBtn }>Settings</div>}
+                                </Link>   
                             </li>
                             <li>
-                                <div onClick={onLogOut} className={styles.textList}><div className={styles.iconContainer}><FontAwesomeIcon icon={faSignOutAlt}/></div>{hideShowNav && 'LogOut'}</div>   
+                                <div onClick={onLogOut} className={styles.textList}>
+                                    <div className={styles.iconContainer}>
+                                        <FontAwesomeIcon icon={faSignOutAlt}/>
+                                    </div>
+                                    {hideShowNav && <div className={ styles.nameBtn }>LogOut</div>}
+                                </div>   
                             </li>
                         </>
                     :
