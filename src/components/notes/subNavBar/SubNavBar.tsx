@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styles from './subNavBar.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { ViewAddNewNoteContext } from "../../../pages/dashboard/Dashboard";
+import { ViewAddNewNoteContext } from "../../../pages/notes/Notes";
 
 const SubNavBar = () => {
 

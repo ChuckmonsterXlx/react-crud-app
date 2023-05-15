@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { setNotes } from '../../../redux/slices/notes';
 import styles from './addNewNote.module.css'
-import { ViewAddNewNoteContext } from '../../../pages/dashboard/Dashboard';
+import { ViewAddNewNoteContext } from '../../../pages/notes/Notes';
 
 const AddNewNote = () => {
   const dispatch = useAppDispatch();

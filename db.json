@@ -1,5 +1,12 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "title": "Nota 1",
+      "content": "Esta es una nota",
+      "userId": 1,
+      "id": 1
+    }
+  ],
   "users": [
     {
       "name": "Alfonso",

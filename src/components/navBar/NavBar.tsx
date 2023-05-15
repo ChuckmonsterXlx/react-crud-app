@@ -4,7 +4,7 @@ import styles from "./navBar.module.css";
 
 //font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faHome, faBorderAll, faUser, faSignOutAlt, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faHome, faStickyNote, faBorderAll, faUser, faSignOutAlt, faCog } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { setVerifedUser } from "../../redux/slices/verifedUser";
 //font awesome
@@ -49,11 +49,11 @@ const NavBar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/dashboard">
+                                <Link to="/notes">
                                     <div className={styles.iconContainer}>
-                                        <FontAwesomeIcon icon={faBorderAll}/>
+                                        <FontAwesomeIcon icon={faStickyNote}/>
                                     </div>
-                                    {hideShowNav && <div className={ styles.nameBtn }>Dashboard</div>}
+                                    {hideShowNav && <div className={ styles.nameBtn }>Notes</div>}
                                 </Link>   
                             </li>
                             <li>

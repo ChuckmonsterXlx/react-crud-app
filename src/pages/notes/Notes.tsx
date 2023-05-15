@@ -4,7 +4,7 @@ import SubNavBar from '../../components/notes/subNavBar/SubNavBar'
 import AddNewNote from '../../components/notes/addNewNote/AddNewNote'
 import Note from '../../components/notes/note/Note';
 import '../../animations/animations.css'
-import styles from './dashboard.module.css'
+import styles from './notes.module.css'
 
 export const ViewAddNewNoteContext = createContext({
   viewAddNewNote: false,

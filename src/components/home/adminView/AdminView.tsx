@@ -151,7 +151,7 @@ const AdminView = () => {
 
     return (
         <>
-            <h3>Usuarios registrados</h3>
+            <h3>Users:</h3>
             <div className={ styles.tableContainer }>
                 <table className={styles.table}>
                     <thead>

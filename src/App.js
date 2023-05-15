@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home.tsx";
 import "./App.css";
-import Dashboard from "./pages/dashboard/Dashboard.tsx";
+import Notes from "./pages/notes/Notes"
 import { useAppSelector, useAppDispatch } from "./hooks/redux/index.ts";
 import { setNotes } from "./redux/slices/notes/index.ts";
 import { setUsers } from "./redux/slices/users/index";
@@ -57,10 +57,10 @@ function App() {
             }
           />
           <Route
-            path="/dashboard"
+            path="/notes"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Notes />
               </ProtectedRoute>
             }
           />
