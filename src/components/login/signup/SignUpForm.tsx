@@ -108,7 +108,7 @@ const SignUpForm = () => {
     return (
         <div className={styles.formContainer}>
             <form className={styles.signUpForm} onSubmit={handleSubmit} >
-                <p>SignUp Form</p>
+                <p>Sign up</p>
                 {errorEmailInUse && <p className={styles.errorEmail}>Email in use</p>}
                 <div>
                     <select name="profileImg" value={imgOptionSelected} onChange={handleImgChange}>

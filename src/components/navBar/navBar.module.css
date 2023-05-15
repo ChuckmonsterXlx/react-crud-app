@@ -13,24 +13,29 @@
 
 .navContainer li {
     margin-bottom: 10px;
-    padding: 5px 10px; 
 }
 
 .navContainer li:hover {
     background: #81d8e7;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .navContainer a {
     color: inherit;
     text-decoration: inherit;
     display: flex;
+    align-items: center;
 }
 .navContainer .textList {
     display: flex;
 }
 
 .iconContainer {
-    width: 20px;
+    width: 25px;
     text-align: center;
-    margin-right: 5px;
+    padding: 5px 10px;
+}
+.nameBtn {
+    padding-right: 10px;
 }
