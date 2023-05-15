@@ -6,7 +6,7 @@ import styles from "./adminView.module.css"
 
 const AdminView = () => {
     const dispatch = useAppDispatch();
-    const [visibleBtnUpdate, setVisibleBtnUpdate] = useState(true);
+    const [visibleBtnUpdate, setVisibleBtnUpdate] = useState(false);
     const { users, verifedUser } = useAppSelector((state) => state);
     const [roleOptionSelected, setRoleOptionSelected] = useState('');
     const [optionalRoles, setOptionalRoles] = useState([
@@ -17,32 +17,72 @@ const AdminView = () => {
 
     interface IUserUpdate {
         userID: string,
-        role: string
+        roleEditing: string
     }
     const [userUpdate, setUserUpdate] = useState<IUserUpdate>({
         userID: '',
-        role: ''
+        roleEditing: ''
     });
 
     const handleSubmit = () => {
         console.log(usersUpdate);
-        // const data = {
-        //     role: 
-        // };
-        // fetch("http://localhost:3001/users/" + , {
-        //   method: "PATCH",
-        //   headers: {
-        //     "Content-Type": "application/json"
-        //   },
-        //   body: JSON.stringify(data)
-        // })
-        // .then(res => res.json())
-        // .then(data => {
-        //   updated();
-        // })
-        // .catch(error => {
-        //   console.error('Ha ocurrido un error:', error);
-        // });
+        usersUpdate.map((userUpdate) => {
+            users.map((user) => {
+                if ( user.id === userUpdate.userID ) {
+                    console.log( "userid: ", user.id, " rol: ", user.role.value, userUpdate.roleEditing )
+                    let data;
+                    // let data = {
+                    //     role: {
+                    //         label: '',
+                    //         value: ''
+                    //     },
+                    //     roleEditing: ''
+                    // }
+
+                    if ( !(user.role.value === userUpdate.roleEditing) ) {
+                        console.log("cambio el user.id, ", user.id);
+                        optionalRoles.map((optionalRole) => {
+                            if ( userUpdate.roleEditing === optionalRole.value ) {
+
+                                data = {
+                                    role: {
+                                        label: optionalRole.label,
+                                        value: optionalRole.value
+                                    },
+                                    roleEditing: optionalRole.value
+                                }
+                            }
+                        })
+                    }
+
+                    console.log(data);
+
+                    fetch("http://localhost:3001/users/" + user.id, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                      refreshUsers();
+                    })
+                    .catch(error => {
+                    console.error('Ha ocurrido un error:', error);
+                    });
+                }
+            })
+        })
+    }
+
+    const refreshUsers = () => {
+        fetch("http://localhost:3001/users")
+            .then((res) => res.json())
+            .then((res) => {
+                dispatch(setUsers(res));
+            })
+            .catch((error) => console.log(error));
     }
 
     const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>, userID: string) => {
@@ -54,14 +94,11 @@ const AdminView = () => {
             //if (usersUpdate.find((user) => user.userID === userID)) {
             //    usersUpdate.push({userID: userID, role: selectedOption.value})
             //}
-            setUserUpdate({...usersUpdate, userID: userID, role: selectedOption.value});
+            setUserUpdate({userID: userID, roleEditing: selectedOption.value});
             
             const updatedUser = {
               ...userToUpdate,
-              role: {
-                label: selectedOption.label,
-                value: selectedOption.value,
-              },
+              roleEditing: selectedOption.value
             };
             const updatedUsers = users.map((user) => {
               if (user.id === userID) {
@@ -70,11 +107,11 @@ const AdminView = () => {
               return user;
             });
             if (!usersUpdate.find((user) => user.userID === userID)){
-                setUsersUpdate([...usersUpdate, { userID: userID, role: selectedOption.value }]);
+                setUsersUpdate([...usersUpdate, { userID: userID, roleEditing: selectedOption.value }]);
             } else {
                 usersUpdate.map((user) => {
                     if (user.userID === userID) {
-                        user.role = selectedOption.value
+                        user.roleEditing = selectedOption.value
                     }
                 })
                 console.log("Ya se encuentra el user: ", userID)
@@ -87,7 +124,29 @@ const AdminView = () => {
       };
 
     useEffect(() => {
-        console.log(usersUpdate);
+        console.log("UserUpdate: ", userUpdate);
+    }, [userUpdate])
+
+    useEffect(() => {
+        let changeCounter = 0;
+        usersUpdate.map((userUpdate) => {
+            users.map((user) => {
+                if ( user.id === userUpdate.userID ) {
+                    if ( user.role.value === userUpdate.roleEditing ) {
+                        if ( changeCounter < 1 ) {
+                            setVisibleBtnUpdate(false);
+                        }
+                    } else {
+                        changeCounter++;
+                        setVisibleBtnUpdate(true);
+                    }
+                }
+            })
+        })
+    }, [users]);
+
+    useEffect(() => {
+
     }, [usersUpdate])
 
     return (
@@ -109,7 +168,7 @@ const AdminView = () => {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>
-                                        <select name="role" value={user.role.value} onChange={(event) => handleRoleChange(event, user.id)}>
+                                        <select name="role" value={user.roleEditing} onChange={(event) => handleRoleChange(event, user.id)}>
                                             {optionalRoles.map((option, index) => (
                                                 <option key={index} value={option.value}>
                                                     {option.label}

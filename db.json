@@ -10,6 +10,7 @@
         "label": "Admin",
         "value": "admin"
       },
+      "roleEditing": "admin",
       "profileImg": {
         "label": "Batman",
         "value": "batman",
@@ -26,6 +27,7 @@
         "label": "Member",
         "value": "member"
       },
+      "roleEditing": "member",
       "profileImg": {
         "label": "Batman",
         "value": "batman",

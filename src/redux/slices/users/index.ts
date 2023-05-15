@@ -8,6 +8,7 @@ export interface IUser {
     name: string;
     lastName: string;
     role: IRole;
+    roleEditing: string;
     profileImg: IProfileImg;
 }
 
