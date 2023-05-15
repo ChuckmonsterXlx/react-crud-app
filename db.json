@@ -1,19 +1,49 @@
 {
-  "posts": [
+  "posts": [],
+  "users": [
     {
-      "title": "Esta es una de Isma",
-      "content": "Estamos trabajando con React y json server Estamos trabajando con React y json server como mock",
-      "id": 7
+      "name": "Alfonso",
+      "lastName": "Velarde",
+      "email": "alfonso@gmail.com",
+      "password": "123",
+      "role": {
+        "label": "Admin",
+        "value": "admin"
+      },
+      "profileImg": {
+        "label": "Batman",
+        "value": "batman",
+        "url": "http://cdn.shopify.com/s/files/1/0337/2993/7548/products/21wbtb00071a-001-rainy-knight-141-swatch_1024x.jpg"
+      },
+      "id": 1
     },
     {
-      "title": "Nota 3",
-      "content": "Contenido de la nota 3",
-      "id": 10
+      "name": "Isac",
+      "lastName": "Medina",
+      "email": "isac@gmail.com",
+      "password": "123",
+      "role": {
+        "label": "Member",
+        "value": "member"
+      },
+      "profileImg": {
+        "label": "Batman",
+        "value": "batman",
+        "url": "http://cdn.shopify.com/s/files/1/0337/2993/7548/products/21wbtb00071a-001-rainy-knight-141-swatch_1024x.jpg"
+      },
+      "id": 2
+    }
+  ],
+  "profileImgs": [
+    {
+      "label": "Batman",
+      "value": "batman",
+      "url": "http://cdn.shopify.com/s/files/1/0337/2993/7548/products/21wbtb00071a-001-rainy-knight-141-swatch_1024x.jpg"
     },
     {
-      "title": "title",
-      "content": "all content goes here\n",
-      "id": 14
+      "label": "Superman",
+      "value": "superman",
+      "url": "https://i0.wp.com/www.jbox.com.br/wp/wp-content/uploads/2021/06/superman-gourmet-poster.jpg"
     }
   ]
 }

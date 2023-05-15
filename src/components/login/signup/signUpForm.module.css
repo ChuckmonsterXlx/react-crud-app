@@ -1,0 +1,28 @@
+.formContainer {
+    padding: 150px 0px;
+    background: #f1f1f1;
+    height: 600px;
+}
+
+.signUpForm {
+    border: 1px solid gray;
+    padding: 20px 50px;
+    width: min-content;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+    background-color: rgb(160, 165, 166);
+}
+
+.signUpForm div{
+    margin-top: 10px;
+}
+
+.signUpForm p {
+    font-family: fantasy;
+    font-weight: 800;
+}
+
+.errorEmail {
+    color: red;
+}

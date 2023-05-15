@@ -1,0 +1,36 @@
+.navContainer {
+    padding-right: 25px;
+    display: flex;
+    min-height: 300px;
+}
+
+.navContainer ul {
+    list-style: none;
+    padding-left: 15px;
+    text-align: left;
+    font-size: 20px;
+}
+
+.navContainer li {
+    margin-bottom: 10px;
+    padding: 5px 10px; 
+}
+
+.navContainer li:hover {
+    background: #81d8e7;
+}
+
+.navContainer a {
+    color: inherit;
+    text-decoration: inherit;
+    display: flex;
+}
+.navContainer .textList {
+    display: flex;
+}
+
+.iconContainer {
+    width: 20px;
+    text-align: center;
+    margin-right: 5px;
+}

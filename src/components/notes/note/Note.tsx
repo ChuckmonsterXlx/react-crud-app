@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import styles from './note.module.css'
+import { INote } from '../../../redux/slices/notes/index'
 
 // fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,8 +9,10 @@ import { faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { setNotes } from '../../../redux/slices/notes';
 
 const Note = () => {
-    const { note } = useAppSelector((state) => state);
+    const { notes, verifedUser } = useAppSelector((state) => state);
     const noteRefs = useRef<(any | null)[]>([]);
+
+    const [filterNotesByUser, setFilterNotesByUser] = useState<INote[]>([]);
 
     const [lastRef, setLastRef] = useState(null);
     const [editMode, setEditMode] = useState(false);
@@ -18,7 +21,8 @@ const Note = () => {
 
     const [singledata, setSingledata] = useState({
         title: '',
-        content: ''
+        content: '',
+        userId: ''
     });
 
     const deleteNote = (noteID:string) => {
@@ -33,7 +37,8 @@ const Note = () => {
         .then(data => {
           setSingledata({
             title: "",
-            content: ""
+            content: "",
+            userId: ''
           });
           updateNotes();
         })
@@ -102,7 +107,8 @@ const Note = () => {
     const updateNote = async (noteID:string, title:string, content:string) => {
         const data = {
             title: title,
-            content: content
+            content: content,
+            userId: verifedUser.userId
         };
         fetch("http://localhost:3001/posts/" + noteID, {
           method: "PUT",
@@ -130,23 +136,29 @@ const Note = () => {
     };
 
     const updateNoteRef = () => {
-        noteRefs.current = Array.from({ length: note?.length || 0 }).map(
+        noteRefs.current = Array.from({ length: notes?.length || 0 }).map(
           (_, i) => noteRefs.current[i] || React.createRef()
         );
         setLastRef(noteRefs.current[noteRefs.current.length - 1]);
     };
 
+    const updateNotesByUser = () => {
+        const filteredNotes = notes.filter((note) => note.userId === verifedUser.userId)
+        setFilterNotesByUser(filteredNotes);
+    }
+
     useEffect(() => {
         updateNoteRef();
-    }, [note]);
+        updateNotesByUser();
+    }, [notes]);
 
     return (
         <>
             <div className={styles.mainContainerNotes}>
                 <div className='columnA'>
                     {
-                        note ?
-                            note.map((note, index) => {
+                        filterNotesByUser ?
+                            filterNotesByUser.map((note, index) => {
                                 if (index % 3 === 0) {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
@@ -171,8 +183,8 @@ const Note = () => {
                 </div>
                 <div className='columnB'>
                     {
-                        note ?
-                            note.map((note, index) => {
+                        filterNotesByUser ?
+                            filterNotesByUser.map((note, index) => {
                                 if (index % 3 === 1) {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
@@ -197,8 +209,8 @@ const Note = () => {
                 </div>
                 <div className='columnC'>
                     {
-                        note ?
-                            note.map((note, index) => {
+                        filterNotesByUser ?
+                            filterNotesByUser.map((note, index) => {
                                 if (index % 3 === 2) {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>

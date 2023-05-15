@@ -1,17 +1,19 @@
 import React, { useContext, useState } from 'react'
-import { useAppDispatch } from '../../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { setNotes } from '../../../redux/slices/notes';
 import styles from './addNewNote.module.css'
 import { ViewAddNewNoteContext } from '../../../pages/Dashboard';
 
 const AddNewNote = () => {
   const dispatch = useAppDispatch();
+  const { verifedUser } = useAppSelector((state) => state);
 
   const { viewAddNewNote, setViewAddNewNote } = useContext(ViewAddNewNoteContext);
 
   const [singledata, setSingledata] = useState({
       title: '',
-      content: ''
+      content: '',
+      userId: verifedUser.userId
   });
   
   const handleChange = (e:any) => {
@@ -40,7 +42,8 @@ const AddNewNote = () => {
     .then(data => {
       setSingledata({
         title: "",
-        content: ""
+        content: "",
+        userId: verifedUser.userId
       });
       updateNotes();
     })
