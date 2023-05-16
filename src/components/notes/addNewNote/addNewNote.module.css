@@ -17,6 +17,15 @@
     min-height: 100px;
     font-family: inherit;
 }
+.formContainer .selectContainer {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+.formContainer .selectContainer p {
+    margin: 0;
+    margin-right: 15px;
+}
 .btnsContainer {
     display: flex;
     justify-content: center;

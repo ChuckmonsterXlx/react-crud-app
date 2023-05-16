@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { setNotes } from '../../../redux/slices/notes';
 import styles from './addNewNote.module.css'
@@ -10,22 +10,38 @@ const AddNewNote = () => {
 
   const { viewAddNewNote, setViewAddNewNote } = useContext(ViewAddNewNoteContext);
 
-  const [singledata, setSingledata] = useState({
-      title: '',
-      content: '',
-      userId: verifedUser.userId
+  const [singleData, setSingleData] = useState({
+    title: '',
+    content: '',
+    userId: verifedUser.userId,
+    privacy: {
+      label: "Private",
+      value: "private",
+    },
   });
   
+  const privacyOptions = [
+    {
+      label: "Private",
+      value: "private",
+    },
+    {
+      label: "Public",
+      value: "public",
+    },
+  ];
+
+  
   const handleChange = (e:any) => {
-    setSingledata({
-      ...singledata,
+    setSingleData({
+      ...singleData,
       [e.target.name]: e.target.value
     });
   };
   
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    if (singledata.title != '' && singledata.content != ''){
+    if (singleData.title != '' && singleData.content != ''){
       createNote();
     }
   };
@@ -36,14 +52,18 @@ const AddNewNote = () => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(singledata)
+      body: JSON.stringify(singleData)
     })
     .then(res => res.json())
     .then(data => {
-      setSingledata({
+      setSingleData({
         title: "",
         content: "",
-        userId: verifedUser.userId
+        userId: verifedUser.userId,
+        privacy: {
+          label: "Private",
+          value: "private",
+        },
       });
       updateNotes();
     })
@@ -65,30 +85,52 @@ const AddNewNote = () => {
     setViewAddNewNote(!viewAddNewNote);
   }
 
+  const handlePrivacyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = event.target.value;
+    const selectedOption = privacyOptions.find((option) => option.value === selectedValue);
+    if ( selectedOption ) {
+      setSingleData({
+        ...singleData,
+        privacy: selectedOption
+      });
+    }
+  }
+
   return (
-      <>
-        <div className={styles.mainContainer}>
-          <form className={styles.formContainer}>
-                <input 
-                type="text" 
-                name="title" 
-                placeholder="Title" 
-                onChange={handleChange} 
-                value={singledata.title}
-                />
-                <textarea 
-                  name="content" 
-                  placeholder="Content"
-                  onChange={handleChange} 
-                  value={singledata.content}
-                />
-                <div className={styles.btnsContainer}>
-                  <p className={styles.btn} onClick={hideView}>Cancelar</p>
-                  <p className={styles.btn} onClick={handleSubmit}>Guardar</p>
-                </div>
-            </form>
-        </div>
-      </>
+    <>
+      <div className={styles.mainContainer}>
+        <form className={styles.formContainer}>
+          <input 
+            type="text" 
+            name="title" 
+            placeholder="Title" 
+            onChange={handleChange} 
+            value={singleData.title}
+          />
+
+          <textarea 
+            name="content" 
+            placeholder="Content"
+            onChange={handleChange} 
+            value={singleData.content}
+          />
+          
+          <div className={ styles.selectContainer }>
+            <p>Privacy: </p>
+            <select onChange={(event) => handlePrivacyChange(event)}>
+              {privacyOptions.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className={styles.btnsContainer}>
+            <p className={styles.btn} onClick={hideView}>Cancel</p>
+            <p className={styles.btn} onClick={handleSubmit}>Save</p>
+          </div>
+        </form>
+      </div>
+    </>
   )
 }
 

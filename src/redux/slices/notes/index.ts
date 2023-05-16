@@ -5,6 +5,10 @@ export interface INote {
     content: string;
     id: string;
     userId: string;
+    privacy: {
+        label: string;
+        value: string;
+    };
 }
 
 const initialState: INote[] = [];

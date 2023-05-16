@@ -2,11 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import styles from './note.module.css'
 import { INote } from '../../../redux/slices/notes/index'
+import { setNotes } from '../../../redux/slices/notes';
 
 // fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { setNotes } from '../../../redux/slices/notes';
+import { faEdit, faGlobeAmericas, faLock, faTimes } from '@fortawesome/free-solid-svg-icons';
+// fontawesome
 
 const Note = () => {
     const { notes, verifedUser } = useAppSelector((state) => state);
@@ -81,7 +82,7 @@ const Note = () => {
                 btnOption.style.display = 'block';
             });
             const acceptButton = document.createElement('button');
-            acceptButton.innerText = 'Ok';
+            acceptButton.innerText = 'Save';
             acceptButton.addEventListener('click', async () => {
                 await updateNote(noteID, newNoteTitle.value, newNoteContent.value );
                 noteTitle.innerText = newNoteTitle.value;
@@ -163,14 +164,22 @@ const Note = () => {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
                                             <div className={ styles.divOptions }>
-                                                <div className={`btnOption `+styles.iconOption } onClick={() => editNote(note.id, index)}>
+                                                <div className={ styles.iconOption }>
+                                                    {
+                                                        note.privacy.value === 'private' ?
+                                                            <FontAwesomeIcon icon={ faLock } />
+                                                        :
+                                                            <FontAwesomeIcon icon={ faGlobeAmericas } />
+                                                    }
+                                                </div>
+                                                <div className={`btnOption ` + styles.iconOption } onClick={() => editNote(note.id, index)}>
                                                     <FontAwesomeIcon icon={ faEdit } />
                                                 </div>
                                                 <div className={ styles.iconOption } onClick={() => deleteNote(note.id)}>
                                                     <FontAwesomeIcon icon={ faTimes } />
                                                 </div>
                                             </div>
-                                            <p className={`noteTitle `+styles.title}>{note.title}</p>
+                                            <p className={`noteTitle ` + styles.title}>{note.title}</p>
                                             <p className={`noteContent `+ styles.content}>{note.content}</p>
                                         </div>
                                     );
@@ -189,14 +198,22 @@ const Note = () => {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
                                             <div className={ styles.divOptions }>
-                                                <div className={`btnOption `+styles.iconOption } onClick={() => editNote(note.id, index)}>
+                                                <div className={ styles.iconOption }>
+                                                    {
+                                                        note.privacy.value === 'private' ?
+                                                            <FontAwesomeIcon icon={ faLock } />
+                                                        :
+                                                            <FontAwesomeIcon icon={ faGlobeAmericas } />
+                                                    }
+                                                </div>
+                                                <div className={`btnOption ` + styles.iconOption } onClick={() => editNote(note.id, index)}>
                                                     <FontAwesomeIcon icon={ faEdit } />
                                                 </div>
                                                 <div className={ styles.iconOption } onClick={() => deleteNote(note.id)}>
                                                     <FontAwesomeIcon icon={ faTimes } />
                                                 </div>
                                             </div>
-                                            <p className={`noteTitle `+styles.title}>{note.title}</p>
+                                            <p className={`noteTitle ` + styles.title}>{note.title}</p>
                                             <p className={`noteContent `+ styles.content}>{note.content}</p>
                                         </div>
                                     );
@@ -215,15 +232,23 @@ const Note = () => {
                                     return (
                                         <div className={styles.containerNote} key={index} ref={noteRefs.current[index]}>
                                             <div className={ styles.divOptions }>
-                                                <div className={`btnOption `+styles.iconOption } onClick={() => editNote(note.id, index)}>
+                                                <div className={ styles.iconOption }>
+                                                    {
+                                                        note.privacy.value === 'private' ?
+                                                            <FontAwesomeIcon icon={ faLock } />
+                                                        :
+                                                            <FontAwesomeIcon icon={ faGlobeAmericas } />
+                                                    }
+                                                </div>
+                                                <div className={`btnOption ` + styles.iconOption } onClick={() => editNote(note.id, index)}>
                                                     <FontAwesomeIcon icon={ faEdit } />
                                                 </div>
                                                 <div className={ styles.iconOption } onClick={() => deleteNote(note.id)}>
                                                     <FontAwesomeIcon icon={ faTimes } />
                                                 </div>
                                             </div>
-                                            <p className={`noteTitle `+styles.title}>{note.title}</p>
-                                            <p className={`noteContent `+ styles.content}>{note.content}</p>
+                                            <p className={`noteTitle ` + styles.title}>{note.title}</p>
+                                            <p className={`noteContent ` + styles.content}>{note.content}</p>
                                         </div>
                                     );
                                 }

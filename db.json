@@ -1,10 +1,24 @@
 {
   "posts": [
     {
-      "title": "Nota 1",
-      "content": "Esta es una nota",
+      "title": "Nueva nota, publica",
+      "content": "nueva nota publica! :D",
       "userId": 1,
+      "privacy": {
+        "label": "Public",
+        "value": "public"
+      },
       "id": 1
+    },
+    {
+      "title": "asd",
+      "content": "asd",
+      "userId": 1,
+      "privacy": {
+        "label": "Private",
+        "value": "private"
+      },
+      "id": 5
     }
   ],
   "users": [
