@@ -1,6 +1,8 @@
 # Start json-server
 
-json-server --watch db.json --port 3001
+(ipv4 ej => 192.168.100.145)
+
+json-server --watch db.json --port 3001 --host 192.168.100.145
 
 # Start react-server
 
